@@ -145,10 +145,10 @@ new error crossing a boundary.
 
 **How to challenge this.** Three ways, in order of force. First, this is a
 *self-instantiation* test: the prototypes and the architecture share an author,
-so the result is partly a statement about how the prototypes were written. Its independence is
-weaker than that of F1 and F2, which rest on third-party evidence, because the
-architecture and the instantiation share an author; but F3 is the only condition
-tested prospectively, against a failure criterion fixed before the substitution. Second, one
+so the result is partly a statement about how the prototypes were written, and F3
+is less independent than F1 and F2, which draw on third-party evidence. However,
+F3 is the only condition tested prospectively, against a failure criterion and
+interface inventory fixed before the substitution. Second, one
 substitution in one domain does not establish a property E2 asserts of ten.
 Third, the end-to-end path was verified at the Model Services contract rather
 than through the Developer Experience surface as the protocol required; that
@@ -165,9 +165,10 @@ deviation, and one other, are recorded in the results.
 
 All three conditions were assessed and none was met. F1 and F2 organize evidence observed retrospectively; F3 was tested prospectively, against a failure criterion and interface inventory fixed before the substitution. The two near-misses on F2 are
 recorded above with the evidence that would let a reader turn them into failures
-if they weigh that evidence differently. F3's evidence is the weakest of the
-three, for the reasons given under it, and should be read as corroboration from
-a self-built instantiation rather than as independent validation.
+if they weigh that evidence differently. F3's evidence is the least independent
+and least generalizable of the three, for the reasons given under it, but it is
+the only prospectively specified behavioral test; it should be read as bounded
+corroboration from a self-built instantiation rather than as independent validation.
 
 ## 6 Reproducing this assessment
 
