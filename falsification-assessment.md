@@ -145,8 +145,10 @@ new error crossing a boundary.
 
 **How to challenge this.** Three ways, in order of force. First, this is a
 *self-instantiation* test: the prototypes and the architecture share an author,
-so the result is partly a statement about how the prototypes were written. It is
-weaker than F1 and F2, which rest on third-party evidence. Second, one
+so the result is partly a statement about how the prototypes were written. Its independence is
+weaker than that of F1 and F2, which rest on third-party evidence, because the
+architecture and the instantiation share an author; but F3 is the only condition
+tested prospectively, against a failure criterion fixed before the substitution. Second, one
 substitution in one domain does not establish a property E2 asserts of ten.
 Third, the end-to-end path was verified at the Model Services contract rather
 than through the Developer Experience surface as the protocol required; that

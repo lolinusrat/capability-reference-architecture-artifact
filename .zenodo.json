@@ -3,7 +3,7 @@
   "upload_type": "dataset",
   "creators": [{"name": "Loli, Nusrat", "affiliation": "Independent Researcher",
                  "orcid": "0009-0007-2942-8261"}],
-  "description": "Evidence and reproduction steps for every claim in the paper: requirements traceability, alternative decompositions, the 40-cell commercial-platform evidence matrix (Table 4), the 36-cell documentary triangulation (Table 5), the falsification assessment, and the frozen protocol, interface inventories, results and negative control of the technology-substitution experiment.",
+  "description": "Evidence and reproduction steps for the paper's derivation and evaluation claims: requirements traceability, alternative decompositions, the 40-cell commercial-platform evidence matrix (Table 4), the 36-cell documentary triangulation (Table 5), the falsification assessment, and the frozen protocol, interface inventories, results and negative control of the technology-substitution experiment.",
   "license": "cc-by-4.0",
   "keywords": ["enterprise AI platform", "reference architecture", "capability model",
                "software architecture", "technology substitution", "replication package"]
