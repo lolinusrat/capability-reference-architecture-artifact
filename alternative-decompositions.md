@@ -67,7 +67,7 @@ in development.
 | Ownership | **Does not discriminate** | In most enterprises at the scale this architecture targets, one AI platform team owns both. The criterion gives no reason to separate them, and none to merge them. This is a genuine null result. |
 | Assessment | **Favors separation** | The two are assessed on different evidence. Runtime health is latency, error rate, retry and fallback behaviour; agent quality is trajectory quality, tool-use correctness and the rate at which human approvers override proposals. An organization can be strong at one and weak at the other. |
 
-**Verdict: ambiguous, resolved two-to-nothing with one abstention.** Separation
+**Verdict: rejected, two criteria to none with one abstention.** Separation
 is supported, but not by all three criteria, and a reader who weights ownership
 most heavily would merge them. The architecture separates them, and B1 records
 that the boundary was revised — the runtime now owns the execution lifecycle and

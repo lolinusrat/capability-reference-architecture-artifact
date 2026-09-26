@@ -37,7 +37,7 @@ lives, and what you should find.
 | Technology substitution executed, not argued (§X-C) | `technology-substitution-frozen.sha256.md`, then `technology-substitution-results.md` | The inventory script and the before-inventory reproduce their frozen digests exactly; the protocol's methodology (lines 1-233) is unchanged since freezing, as the amendment note in that file shows; and both interface inventories share one records-only digest. The results record the substitution as **OpenAI → Ollama** | 4 min |
 | **0 cross-boundary interface changes** (§X-C) | `technology-substitution-results.md` §1 and §6 | All five interface surfaces byte-identical across 111 files; 0 files modified in the four neighbouring domains; **1** file changed within Model Services, in configuration | 4 min |
 | Measurement discriminates a violation (§X-C) | `boundary-containment-negative-control-results.md` §1 and §4 | A planted realization-specific field changes **1** AI Runtime interface file and its surface aggregate; the other four surfaces byte-identical; the tree restored after revert | 3 min |
-| Boundary criteria do real but incomplete work (§5) | `alternative-decompositions.md` §5 | A and D rejected; B ambiguous; **C preferred on the criteria and not adopted** | 3 min |
+| Boundary criteria do real but incomplete work (§5) | `alternative-decompositions.md` §5 | A, B and D rejected (B and D with separation supported but not compelled); **C preferred on the criteria and not adopted** | 3 min |
 
 The sections that follow give the full procedure for *re-deriving* each result
 rather than merely checking it.
@@ -135,8 +135,9 @@ retrieved on **31 August 2026**.
 3. Apply each criterion using the evidence already in this artifact.
 4. Compare with the result table in `alternative-decompositions.md` §6.
 
-**Expected result: two alternatives rejected, one ambiguous, and one preferred
-on the criteria but not adopted.** The third is the
+**Expected result: three alternatives rejected — one outright, two with
+separation supported but not compelled — and one preferred on the criteria
+but not adopted.** The third is the
 interesting case and is reported in full: splitting Platform Management is
 better on substitutability and assessment, and is rejected because a
 product-management domain would not be a technical capability. Ownership fails
