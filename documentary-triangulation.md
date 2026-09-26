@@ -290,9 +290,9 @@ evidence changed.
 Totals move from 19 ●, 12 ◐, 5 ○ to **8 ●, 25 ◐, 3 ○**. The ● counts by
 proposition move from P1–P6 = 2, 4, 2, 4, 3, 4 to **2, 1, 1, 3, 0, 1**.
 
-**What changes in the findings.** F1 is rewritten: P2 and P6 are no longer the
-best-corroborated propositions. P4 is, and F2 now reports it with three sources.
-F3's substance is unchanged, and its cells now match it. F4 is recounted. F5 is
+**What changes in the findings.** Finding 1 is rewritten: P2 and P6 are no longer the
+best-corroborated propositions. P4 is, and Finding 2 now reports it with three sources.
+Finding 3's substance is unchanged, and its cells now match it. Finding 4 is recounted. Finding 5 is
 unchanged.
 
 ## Consistency re-rating — 25 September 2026
@@ -315,13 +315,13 @@ proposition are unchanged (P1–P6 = 2, 1, 1, 3, 0, 1). Across the 24 and 25
 September passes, fourteen cells have been re-rated. The rubric is now printed in
 the Table 5 caption, so the asymmetry would have been visible to a reader.
 
-**What changes in the findings.** None in substance. F5 now reports all three
+**What changes in the findings.** None in substance. Finding 5 now reports all three
 governance sources as not organising on a capability basis, which strengthens its
 conclusion that P1 is corroborated thinly.
 
 ## 6 Findings
 
-**F1 — Full corroboration comes only from the capability sources.** Every ● in
+**Finding 1 — Full corroboration comes only from the capability sources.** Every ● in
 the matrix is held by S4, S5 or S6. The governance family supports each
 proposition it addresses only partially, because it states obligations for AI
 systems and organisations rather than properties of platform capabilities.
@@ -332,7 +332,7 @@ reported both as the best corroborated, with four ● each; that rested on
 governance-family ratings that did not apply the rubric's partial clause as it
 was applied to S4–S6, and was corrected on 24 September 2026.
 
-**F2 — Execution-path assurance is well corroborated, but as an obligation
+**Finding 2 — Execution-path assurance is well corroborated, but as an obligation
 rather than as an architectural placement.** Three sources (S4, S5, S6) corroborate P4, which makes it the best-corroborated
 proposition, and they do so from different directions: IBM filters prompts and
 responses inline, EAIOF applies guardrails where behaviour enters and leaves the
@@ -346,7 +346,7 @@ reason D2 is stated as coordination rather than as a single point of
 application: the corroborating sources place controls at gateways, at model
 boundaries, at agent action points and at data access, not at one location.
 
-**F3 — Feedback is universally required as process and largely absent as
+**Finding 3 — Feedback is universally required as process and largely absent as
 architecture.** All three governance sources support P5 (S1, S2, S3) only
 partially, because all three do so as a requirement for iteration, review and continual improvement
 over a lifecycle. None of the three architecture and capability sources (S4, S5,
@@ -357,7 +357,7 @@ paper's §7 treatment of three specific runtime feedback edges is therefore not
 contradicted by any source, and is not supplied by any of them either. This is
 the clearest point of differentiation the triangulation produces.
 
-**F4 — Boundary criteria are corroborated more strongly than expected.** P3
+**Finding 4 — Boundary criteria are corroborated more strongly than expected.** P3
 receives one ● and five ◐. EAIOF in particular states capability characteristics
 — reusability, being "governed as a unit", and being "versioned and evolvable" —
 that closely parallel the paper's boundary criteria of independent
@@ -369,7 +369,7 @@ since no source publishes a traceable derivation from requirements to
 boundaries; but the criterion itself should be described as corroborated rather
 than as introduced here.
 
-**F5 — Capability-based organisation of an enterprise AI platform is attempted
+**Finding 5 — Capability-based organisation of an enterprise AI platform is attempted
 by few independent sources.** Only S4 and S5 reach ● on P1, and both are outside
 peer review. NIST, the EU AI Act and ISO/IEC 42001 do not organise on this basis at
 all (○) — ISO's Annex A decomposes control objectives thematically, not into
@@ -382,7 +382,7 @@ should not represent it as broadly established.
 1. **Not a systematic review.** Six sources were selected purposively against
    stated criteria. They are not a sample, and no claim of coverage or
    saturation is made. A different six sources could yield different marginal
-   counts, though F1–F3 rest on patterns visible across both families rather
+   counts, though Findings 1–3 rest on patterns visible across both families rather
    than on individual cells.
 2. **Single rater.** All 36 cells were rated by the same person who derived the
    propositions and wrote the architecture. This is the same threat recorded for
@@ -403,7 +403,7 @@ should not represent it as broadly established.
    single-author practitioner framework. They carry the most weight on P1 and P3,
    which are the propositions with the weakest independent support overall. That
    the two strongest corroborations of capability-based organisation come from
-   outside peer review is itself part of the finding (F5), not a defect concealed
+   outside peer review is itself part of the finding (Finding 5), not a defect concealed
    by it.
 6. **Snapshot.** S4 and S5 are living web documents, retrieved on 31 August 2026.
    S4 records a last update of 30 April 2025. Both may change.

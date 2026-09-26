@@ -33,7 +33,7 @@ lives, and what you should find.
 | All forty ratings content-verified (§XI-B) | `commercial-platform-evidence-matrix.md`, *Evidence re-verification* | 40 cells verified at body level, 12 of them in the 22 September pass; provenance 28/9/3 before, 40/0/0 after; no rating changed | 3 min |
 | Thirty-six documentary ratings (Table 5) | `documentary-triangulation.md` §5.1 | **8 ●, 24 ◐, 4 ○**, matching the matrix reproduced below | 4 min |
 | S6 rated from full papers, not abstracts (§X-B) | `documentary-triangulation.md`, *Evidence re-verification — S6* | All three Lu et al. papers retrieved in full; P3 moves off abstract text to a body locator; no rating changed; S3 remains paywalled | 3 min |
-| Falsification outcomes (§X, §X-A, §X-B, §X-C) | `falsification-assessment.md` §5 | F1, F2 and F3 all tested and none met; one recorded exception each for F2's two assessments | 3 min |
+| Falsification outcomes (§X, §X-A, §X-B, §X-C) | `falsification-assessment.md` §5 | F1–F3 assessed and none met (F1 and F2 organize evidence retrospectively; F3 was tested against a criterion fixed in advance); one recorded exception each for F2's two assessments | 3 min |
 | Technology substitution executed, not argued (§X-C) | `technology-substitution-frozen.sha256.md`, then `technology-substitution-results.md` | The inventory script and the before-inventory reproduce their frozen digests exactly; the protocol's methodology (lines 1-233) is unchanged since freezing, as the amendment note in that file shows; and both interface inventories share one records-only digest. The results record the substitution as **OpenAI → Ollama** | 4 min |
 | **0 cross-boundary interface changes** (§X-C) | `technology-substitution-results.md` §1 and §6 | All five interface surfaces byte-identical across 111 files; 0 files modified in the four neighbouring domains; **1** file changed within Model Services, in configuration | 4 min |
 | Measurement discriminates a violation (§X-C) | `boundary-containment-negative-control-results.md` §1 and §4 | A planted realization-specific field changes **1** AI Runtime interface file and its surface aggregate; the other four surfaces byte-identical; the tree restored after revert | 3 min |
@@ -65,17 +65,19 @@ rather than merely checking it.
    recorded in the 40-cell evidence register in
    `commercial-platform-evidence-matrix.md`.
 3. Apply the predefined rubric:
-   - **● substantial** — documented first-party capabilities address most
-     responsibilities of the domain.
+   - **● substantial** — firmly documented first-party coverage of more than
+     half of the responsibilities Table 1 defines for the domain, excluding
+     separately licensed or billed adjacent products.
    - **◐ partial** — coverage exists but is narrower, fragmented, or omits major
      responsibilities.
-   - **○ limited** — little first-party coverage is documented.
+   - **○ limited** — little first-party coverage is documented (defined by the
+     rubric but not observed in the final Table 4 ratings).
 4. Compare the resulting 40 ratings with **Table 4** of the paper.
 
 **Expected result: 36 ●, 4 ◐, 0 ○.** Every platform reaches at least partial
 coverage in all ten domains; the four partial ratings are Governance (Bedrock,
 Vertex AI), Knowledge Services (watsonx) and Model Services (Vertex AI). This is the result after the
-24 September 2026 re-rating; the originally published 31 ●, 9 ◐ and the reason
+24 September 2026 re-rating; the original, pre-recheck assessment of 31 ●, 9 ◐ and the reason
 for each of the seven changes are kept in the evidence matrix. Separately licensed
 adjacent products (Microsoft Purview, Google Security Command Center, AWS Audit
 Manager) are excluded for every vendor. If your totals differ by more than two or three cells, the

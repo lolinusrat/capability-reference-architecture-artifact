@@ -161,7 +161,7 @@ deviation, and one other, are recorded in the results.
 | **F2** Boundaries, documentary | 36 documentary ratings | Not met — one divergence recorded (IBM organizing basis) |
 | **F3** Technology independence | one frozen-criterion substitution, `provider-openai` → `provider-ollama` | Not met — 0 cross-boundary interface changes, 1 within-domain configuration change |
 
-All three conditions were tested and none was met. The two near-misses on F2 are
+All three conditions were assessed and none was met. F1 and F2 organize evidence observed retrospectively; F3 was tested prospectively, against a failure criterion and interface inventory fixed before the substitution. The two near-misses on F2 are
 recorded above with the evidence that would let a reader turn them into failures
 if they weigh that evidence differently. F3's evidence is the weakest of the
 three, for the reasons given under it, and should be read as corroboration from

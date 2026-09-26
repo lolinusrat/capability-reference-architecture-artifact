@@ -8,7 +8,7 @@ impression.
 > **Status: FROZEN, re-rated 24 September 2026.** All four vendors collected and
 > calibrated. Table 4 now carries **36 substantial, 4 partial, 0 limited**, after
 > all forty cells were counted against the Table 1 responsibilities: six were
-> raised and one lowered — see **Re-rating — 24 September 2026** below. The originally published result was
+> raised and one lowered — see **Re-rating — 24 September 2026** below. The original, pre-recheck assessment was
 > 31 substantial and 9 partial. Any change here must be mirrored in Table 4 and
 > vice versa.
 
