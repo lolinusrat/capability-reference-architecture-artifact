@@ -75,7 +75,7 @@ numerical scores.
 Vendors are collected sequentially but **rated finally only after all four are
 in**. Scoring vendor *n* against the standard implicitly set by vendor *n−1*
 would make the first vendor collected the yardstick. A cross-check pass over
-all 40 cells was completed before Table 4 was published.
+all 40 cells was completed before Table 4 was finalized.
 
 ## Vendor mapping
 
@@ -111,7 +111,7 @@ exercise (then numbered Table 3); their derivation was not recorded.
 
 ## A — Amazon Web Services (Bedrock, AgentCore)
 
-Row as published in Table 4: **● ● ● ● ● ◐ ● ● ● ●** (Platform Management re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
+Final Table 4 row: **● ● ● ● ● ◐ ● ● ● ●** (Platform Management re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
 Changes from baseline: **Agent Services ◐→●, Evaluation ◐→●, Platform Management ○→◐**
 
 | Domain | Prior | Proposed | Evidence | Verification |
@@ -159,7 +159,7 @@ rationale must record the delegation, because a reviewer checking for
 
 ## C — Google Cloud (Vertex AI / Gemini Enterprise Agent Platform)
 
-Row as published in Table 4: **● ● ● ● ● ◐ ● ● ● ●** (Knowledge Services and Platform Management re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
+Final Table 4 row: **● ● ◐ ● ● ◐ ● ● ● ●** (Knowledge Services and Platform Management re-rated ◐→●, and Model Services ●→◐, on 24 Sep 2026; the table below is the original assessment)
 Changes from baseline: **AI Runtime ◐→●, Agent Services ◐→●, Evaluation ○→●,
 Platform Management ○→◐**  
 *(Operations was provisionally lowered to ◐, then restored to ● when the relocated observability documentation was found — see the Operations row.)*
@@ -215,7 +215,7 @@ Two consequences:
 | Evaluation | Gen AI evaluation service; "Evaluate agents" documented as a distinct capability |
 | Runtime/lifecycle | Agent Platform described as a managed environment for "testing, release management, and reliability at a global scale" |
 
-### Not yet established (historical — all resolved before Table 4 was published)
+### Not yet established (historical — all resolved before Table 4 was finalized)
 
 Governance specifics, Operations and monitoring breadth, Platform Management
 scope, Developer Experience breadth, and Model Services (Model Garden, routing,
@@ -232,7 +232,7 @@ observations above were re-extracted from page bodies for this reason.
 
 ## B — Microsoft (Foundry, Foundry Control Plane)
 
-Row as published in Table 4: **● ● ● ● ● ● ● ● ● ●** (Governance re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
+Final Table 4 row: **● ● ● ● ● ● ● ● ● ●** (Governance re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
 Changes from baseline: **Agent Services ◐→●, Evaluation ◐→●, Platform
 Management ○→●**
 
@@ -283,7 +283,7 @@ responsibilities.
 
 ## D — IBM (watsonx.ai, watsonx.governance, watsonx Orchestrate)
 
-Row as published in Table 4: **● ● ● ◐ ● ● ● ● ● ●** (Evaluation and Operations re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
+Final Table 4 row: **● ● ● ◐ ● ● ● ● ● ●** (Evaluation and Operations re-rated ◐→● on 24 Sep 2026; the table below is the original assessment)
 Changes from baseline: **Developer Experience ◐→●, AI Runtime ◐→●, Model
 Services ◐→●, Agent Services ◐→●, Evaluation ◐→◐ (held), Operations ◐→◐ (held),
 Platform Management ○→●**
