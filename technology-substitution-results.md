@@ -8,7 +8,7 @@ reported as observed, including the two failures and the two deviations.
 
 ## 1 Outcome
 
-> **The pre-registered F3 technology-independence failure condition was NOT
+> **The pre-specified F3 technology-independence failure condition was NOT
 > MET.** Replacing a hosted commercial Model Services realization with a
 > materially different self-hosted realization required **one changed file, in
 > configuration, inside Model Services**, and **zero interface changes outside
@@ -134,7 +134,7 @@ Neighbouring test suites, re-run after the substitution:
 ## 7 Discrimination case
 
 The protocol required requesting embeddings from a realization that does not
-implement them, and pre-registered the expected outcome as rejection through the
+implement them, and pre-specified the expected outcome as rejection through the
 declared capability mechanism rather than an interface change.
 
 It took **three attempts to isolate capability from reachability**, and the two
@@ -277,5 +277,5 @@ the experiment, not the architecture.
 
 This screening was performed after the experiment reported above and is recorded
 here, outside the frozen protocol, so that it cannot be read as having been part
-of the pre-registered design.
+of the pre-specified design.
 

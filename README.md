@@ -171,6 +171,11 @@ author — it tests an architectural prediction, and is not independent
 validation; the commercial-platform and documentary assessments are where the
 external evidence lies.
 
+**Terminology.** The frozen protocol (`technology-substitution-protocol.md`, kept
+byte-exact) uses "pre-registered" to mean internally pre-specified and frozen
+before execution; no external preregistration registry was used. The paper and
+the other artifact files say "pre-specified" or "fixed before execution".
+
 ## Evidence provenance
 
 Provenance is recorded per cell. In the original assessment it was **not
