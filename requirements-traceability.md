@@ -44,18 +44,18 @@ module.
 
 | Req. | Architectural concern | Literature evidence | Practitioner evidence (candidate) | Capability domain | Criterion |
 |:---|:---|:---|:---|:---|:---|
-| **R1** Multi-model support | Provider coupling; model and provider selection and substitution behind a stable provider-neutral interface, managed, self-hosted or combined | [36] Lu et al. | D02 §5; ADR-002 *Technology-Neutral Architecture*; ADR-003 *Enterprise Model Gateway*; `Model_Gateway` | Model Services | E2 **stated** |
-| **R2** Enterprise knowledge access | Governed access, ingestion, indexing, refresh and retrieval over heterogeneous enterprise knowledge | [14] Edge et al.; [24] Hogan et al.; [33] Lewis et al. | D03 §3, §13, §15; ADR-004 *Retrieval as a Shared Platform Capability*; `Project_Synapse` (vector RAG vs GraphRAG, orig. "Nexus") | Knowledge Services | E1, E5 *(inferred)* |
-| **R3** Agent execution | Agentic execution within enforced limits; autonomous, semi-autonomous or combined modes | [34] Liu et al.; [57] Wooldridge; [58] Yao et al. | D04 §5–14 (patterns 1–10); D02 §7; `Adaptive_Multi-Agent_Code_Review_System` | AI Runtime; Agent Services | E1, E6 *(inferred)* |
-| **R4** Human accountability | Human oversight and decision authority | [16] EU AI Act; [46] NIST AI RMF | D01 P8 *Human Accountability*; D04 §10 *Human-in-the-Loop*; ADR-008 *Human Approval for High-Risk Actions*; `control-approval` | AI Runtime *(principal)*; Governance *(contributing)* | E5 *(inferred)* |
-| **R5** Policy enforcement on the execution path | Runtime enforcement rather than periodic assessment | [46] NIST AI RMF; [47] NIST GenAI Profile — establish the governance need; **execution-path enforcement is this paper's architectural response, not a NIST prescription** | D06 §10 *Policy Enforcement*; D09 *PDP*/*PEP*; D01 P2 *Governance by Design*; ADR-007; `guardrail-policy`, `guardrail-orchestrator/DecisionAggregator` | Governance | E5 **stated** |
-| **R6** Security across AI-specific attack surfaces | Direct and indirect prompt injection, sensitive-data exposure and leakage, model abuse, tool misuse | [47] NIST GenAI Profile; [56] Vassilev et al. | D06 (security domains); D01 P5 *Security by Default*; `guardrail-input`, `guardrail-security`, `control-security` | Security | E6 *(inferred)* |
-| **R7** Continuous evaluation | AI quality as a lifecycle concern, not a release gate | [2] Amershi et al.; [47] NIST GenAI Profile | D05 (whole); D01 P7 *Evaluation as a Platform Capability*; ADR-005; `Tethera_Eval` | Evaluation | E1 **stated** |
-| **R8** AI-specific observability | Telemetry that conventional infrastructure metrics cannot supply | [47] NIST GenAI Profile; [48] OpenTelemetry GenAI — five of seven listed fields map to documented attributes; *policy decisions* has no OpenTelemetry equivalent | D01 P6 *Observability by Default*; D04 §17 *Agent Observability*; ADR-006; `control-observability`, `guardrail-observability` | Operations | E7 **stated** |
-| **R9** Developer experience and platform consumption | Reusable self-service consumption of shared capabilities | [18] Forsgren et al.; [55] Skelton & Pais | D02 §3; D01 P9 *Developer Experience*; `Enterprise_AI_SDK` | Developer Experience | E8 *(inferred — name match only)* |
-| **R10** Cost transparency and control | Consumption economics as an architectural input | [13] Dekoninck et al. — carries the cost–performance premise only; **request/tenant/application accounting and quotas are the paper's synthesis** | D05 §13 *Cost Evaluation*; D09 *Cost Attribution*, *Step Budget*; `gateway-rate-limit`; `self-hosted-llm-benchmark`; `Project_Synapse` (quantization) | Model Services; Operations | E2, E7 *(inferred)* |
-| **R11** Platform lifecycle | Repeatable deployment, configuration and versioning; independent evolution of platform and consumers | [10] CNCF; [53] Sculley et al. — CNCF carries the platform-lifecycle claim; Sculley supports the coupling concern | D08 (maturity model); D01 P10 *Continuous Evolution*; D02 §12 | Platform Management | E3 **stated** |
-| **R12** Auditability and traceability | Provenance sufficient to reconstruct AI-assisted execution | [16] EU AI Act; [46] NIST AI RMF; [47] NIST GenAI Profile | D06 (audit); D01 P2; `control-audit`, `guardrail-evidence` | Governance *(principal)*; Operations *(contributing)* | E5 **stated** |
+| **R1** Multi-model support | Provider coupling; model and provider selection and substitution behind a stable provider-neutral interface, managed, self-hosted or combined | [37] Lu et al. | D02 §5; ADR-002 *Technology-Neutral Architecture*; ADR-003 *Enterprise Model Gateway*; `Model_Gateway` | Model Services | E2 **stated** |
+| **R2** Enterprise knowledge access | Governed access, ingestion, indexing, refresh and retrieval over heterogeneous enterprise knowledge | [15] Edge et al.; [25] Hogan et al.; [34] Lewis et al. | D03 §3, §13, §15; ADR-004 *Retrieval as a Shared Platform Capability*; `Project_Synapse` (vector RAG vs GraphRAG, orig. "Nexus") | Knowledge Services | E1, E5 *(inferred)* |
+| **R3** Agent execution | Agentic execution within enforced limits; autonomous, semi-autonomous or combined modes | [35] Liu et al.; [58] Wooldridge; [59] Yao et al. | D04 §5–14 (patterns 1–10); D02 §7; `Adaptive_Multi-Agent_Code_Review_System` | AI Runtime; Agent Services | E1, E6 *(inferred)* |
+| **R4** Human accountability | Human oversight and decision authority | [17] EU AI Act; [47] NIST AI RMF | D01 P8 *Human Accountability*; D04 §10 *Human-in-the-Loop*; ADR-008 *Human Approval for High-Risk Actions*; `control-approval` | AI Runtime *(principal)*; Governance *(contributing)* | E5 *(inferred)* |
+| **R5** Policy enforcement on the execution path | Runtime enforcement rather than periodic assessment | [47] NIST AI RMF; [48] NIST GenAI Profile — establish the governance need; **execution-path enforcement is this paper's architectural response, not a NIST prescription** | D06 §10 *Policy Enforcement*; D09 *PDP*/*PEP*; D01 P2 *Governance by Design*; ADR-007; `guardrail-policy`, `guardrail-orchestrator/DecisionAggregator` | Governance | E5 **stated** |
+| **R6** Security across AI-specific attack surfaces | Direct and indirect prompt injection, sensitive-data exposure and leakage, model abuse, tool misuse | [48] NIST GenAI Profile; [57] Vassilev et al. | D06 (security domains); D01 P5 *Security by Default*; `guardrail-input`, `guardrail-security`, `control-security` | Security | E6 *(inferred)* |
+| **R7** Continuous evaluation | AI quality as a lifecycle concern, not a release gate | [3] Amershi et al.; [48] NIST GenAI Profile | D05 (whole); D01 P7 *Evaluation as a Platform Capability*; ADR-005; `Tethera_Eval` | Evaluation | E1 **stated** |
+| **R8** AI-specific observability | Telemetry that conventional infrastructure metrics cannot supply | [48] NIST GenAI Profile; [49] OpenTelemetry GenAI — five of seven listed fields map to documented attributes; *policy decisions* has no OpenTelemetry equivalent | D01 P6 *Observability by Default*; D04 §17 *Agent Observability*; ADR-006; `control-observability`, `guardrail-observability` | Operations | E7 **stated** |
+| **R9** Developer experience and platform consumption | Reusable self-service consumption of shared capabilities | [19] Forsgren et al.; [56] Skelton & Pais | D02 §3; D01 P9 *Developer Experience*; `Enterprise_AI_SDK` | Developer Experience | E8 *(inferred — name match only)* |
+| **R10** Cost transparency and control | Consumption economics as an architectural input | [14] Dekoninck et al. — carries the cost–performance premise only; **request/tenant/application accounting and quotas are the paper's synthesis** | D05 §13 *Cost Evaluation*; D09 *Cost Attribution*, *Step Budget*; `gateway-rate-limit`; `self-hosted-llm-benchmark`; `Project_Synapse` (quantization) | Model Services; Operations | E2, E7 *(inferred)* |
+| **R11** Platform lifecycle | Repeatable deployment, configuration and versioning; independent evolution of platform and consumers | [11] CNCF; [54] Sculley et al. — CNCF carries the platform-lifecycle claim; Sculley supports the coupling concern | D08 (maturity model); D01 P10 *Continuous Evolution*; D02 §12 | Platform Management | E3 **stated** |
+| **R12** Auditability and traceability | Provenance sufficient to reconstruct AI-assisted execution | [17] EU AI Act; [47] NIST AI RMF; [48] NIST GenAI Profile | D06 (audit); D01 P2; `control-audit`, `guardrail-evidence` | Governance *(principal)*; Operations *(contributing)* | E5 **stated** |
 
 **stated** = the manuscript explicitly says the domain discharges that
 requirement, or the criterion names it. *(inferred)* = consistent with the text
@@ -73,25 +73,25 @@ Closed by the targeted source review:
 
 | Req. | Was | Now |
 |:---|:---|:---|
-| **R5** | no citation | [46] NIST AI RMF and [47] NIST GenAI Profile establish the governance need; execution-path enforcement is stated in the paper as its own architectural response, not attributed to NIST |
-| **R6** | zero trust only, not AI-specific | [47] NIST GenAI Profile and [56] Vassilev et al. cover prompt injection, data leakage and model abuse directly |
-| **R7** | Amershi alone, thin | [2] Amershi et al. and [47] NIST GenAI Profile — the GenAI Profile calls for regular safety evaluation and post-deployment monitoring |
-| **R8** | no citation | [47] NIST GenAI Profile and [48] OpenTelemetry GenAI — five of the seven listed telemetry fields map to documented OpenTelemetry attributes; *policy decisions* has no equivalent and rests on NIST |
-| **R10** | no citation | [13] Dekoninck et al. carries the cost–performance premise; the enterprise accounting and quota obligations are separated out in the manuscript as the paper's synthesis |
-| **R11** | Sculley alone, not about platform versioning | [10] CNCF added alongside [53] Sculley et al.; CNCF carries the platform-lifecycle claim |
+| **R5** | no citation | [47] NIST AI RMF and [48] NIST GenAI Profile establish the governance need; execution-path enforcement is stated in the paper as its own architectural response, not attributed to NIST |
+| **R6** | zero trust only, not AI-specific | [48] NIST GenAI Profile and [57] Vassilev et al. cover prompt injection, data leakage and model abuse directly |
+| **R7** | Amershi alone, thin | [3] Amershi et al. and [48] NIST GenAI Profile — the GenAI Profile calls for regular safety evaluation and post-deployment monitoring |
+| **R8** | no citation | [48] NIST GenAI Profile and [49] OpenTelemetry GenAI — five of the seven listed telemetry fields map to documented OpenTelemetry attributes; *policy decisions* has no equivalent and rests on NIST |
+| **R10** | no citation | [14] Dekoninck et al. carries the cost–performance premise; the enterprise accounting and quota obligations are separated out in the manuscript as the paper's synthesis |
+| **R11** | Sculley alone, not about platform versioning | [11] CNCF added alongside [54] Sculley et al.; CNCF carries the platform-lifecycle claim |
 
 Two further defects found during the claim-to-citation audit and fixed:
 
 - **Sculley misattributed in §2.3.** Compression had merged two citations so that
   Sculley appeared to supply MLOps practices rather than the technical-debt
   motivation. Re-separated.
-- **[52] NIST SP 800-207 orphaned.** Zero Trust lost its only citation when §5
+- **[53] NIST SP 800-207 orphaned.** Zero Trust lost its only citation when §5
   was compressed. Restored to the Security domain paragraph, supporting
   per-request access decisions rather than perimeter inheritance — a closer fit
   than its previous placement.
 
 Also revised: **R1** no longer calls direct provider integration "the most
-consequential enterprise AI anti-pattern" — a superlative [36] Lu et al. does not
+consequential enterprise AI anti-pattern" — a superlative [37] Lu et al. does not
 establish. It now claims provider coupling and reduced substitutability, which
 it does.
 
@@ -103,10 +103,10 @@ result.
 
 | # | Source | Verified | Supports |
 |:---|:---|:---|:---|
-| [13] | Dekoninck, J., Baader, M., Vechev, M.: A unified approach to routing and cascading for LLMs. ICML 2025, PMLR 267:12987–13010 | PMLR record; abstract confirms cost–performance framing. No DOI — PMLR mints none | R10 |
-| [47] | NIST: AI RMF: Generative Artificial Intelligence Profile. NIST AI 600-1 (2024) | doi:10.6028/NIST.AI.600-1 | R5, R6, R7, R8 |
-| [48] | OpenTelemetry: GenAI semantic conventions | Canonical repository. **Note:** these conventions moved out of the main semconv docs; the older `opentelemetry.io/docs/specs/semconv/gen-ai/` URL now serves only a "Moved" notice, so the repository URL is cited instead | R8 |
-| [56] | Vassilev, A., et al.: Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations. NIST AI 100-2 E2025 (2025) | doi:10.6028/NIST.AI.100-2e2025. Note this is the 2025 edition; a 2023 edition exists under a different DOI | R6 |
+| [14] | Dekoninck, J., Baader, M., Vechev, M.: A unified approach to routing and cascading for LLMs. ICML 2025, PMLR 267:12987–13010 | PMLR record; abstract confirms cost–performance framing. No DOI — PMLR mints none | R10 |
+| [48] | NIST: AI RMF: Generative Artificial Intelligence Profile. NIST AI 600-1 (2024) | doi:10.6028/NIST.AI.600-1 | R5, R6, R7, R8 |
+| [49] | OpenTelemetry: GenAI semantic conventions | Canonical repository. **Note:** these conventions moved out of the main semconv docs; the older `opentelemetry.io/docs/specs/semconv/gen-ai/` URL now serves only a "Moved" notice, so the repository URL is cited instead | R8 |
+| [57] | Vassilev, A., et al.: Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations. NIST AI 100-2 E2025 (2025) | doi:10.6028/NIST.AI.100-2e2025. Note this is the 2025 edition; a 2023 edition exists under a different DOI | R6 |
 
 ## Derivation decisions: normalization, consolidation and separation
 

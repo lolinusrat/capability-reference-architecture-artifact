@@ -13,10 +13,13 @@ so that a reader can disagree with it.
 | **F2 — Boundary failure** | Independent architectures repeatedly divide responsibilities in ways that contradict the proposed boundaries for architectural reasons rather than commercial packaging. | Repeated placement of the same responsibility on the other side of a proposed boundary, for stated architectural reasons. |
 | **F3 — Technology-independence failure** | Substituting a materially different realization of one capability requires changes outside its own domain. | A substitution that propagates an interface change into another domain. |
 
-**These conditions were formulated after the evaluation was carried out, not
-pre-registered.** They discipline how the results are reported; they did not
-constrain how the study was designed. This is stated in §11.2 of the paper and
-is repeated here because it bounds what the assessment below can claim.
+**F1 and F2 were formulated after their evaluations were carried out.** They
+organize how the commercial and documentary evidence is reported; they did not
+constrain how those assessments were designed. **F3 was tested prospectively:**
+its failure criterion and interface inventory were fixed before the technology
+substitution was executed (§4). None of the three was externally pre-registered.
+This is stated in §11.2 of the paper and is repeated here because it bounds what
+the assessment below can claim.
 
 ## 2 F1 — Completeness
 

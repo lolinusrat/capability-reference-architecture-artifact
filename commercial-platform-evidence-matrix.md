@@ -198,7 +198,7 @@ Enterprise Agent Platform overview"*, and the documentation breadcrumb reads
 
 Two consequences:
 
-1. **Reference [15]** is currently *"Google Cloud: Vertex AI documentation"*.
+1. **The Vertex AI reference** is currently *"Google Cloud: Vertex AI documentation"*.
    The product naming needs rechecking before submission, and the cited URL must
    resolve to what the citation claims.
 2. This is the strongest churn data point collected so far — a whole-platform
