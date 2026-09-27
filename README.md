@@ -173,15 +173,19 @@ external evidence lies.
 
 ## Evidence provenance
 
-Provenance is recorded per cell and is **not uniform**:
+Provenance is recorded per cell. In the original assessment it was **not
+uniform**:
 
 - **verified** — the source body was retrieved and the supporting text inspected.
 - **author-read** — the source was read manually where automated retrieval was
   unreliable.
 - **title-level** — the source endpoint and title were confirmed, but page
-  content could not be reliably retrieved. These cells carry lower evidential
-  confidence, and the matrix names the two substantial ratings that rest on
-  title-level evidence alone.
+  content could not be reliably retrieved.
+
+That mix (28 verified, 9 author-read, 3 title-level) is the assessment history. The
+re-verification recorded in `commercial-platform-evidence-matrix.md` brought all
+40 commercial-platform cells to content-verified provenance (40 / 0 / 0) without
+changing any rating.
 
 All 40 commercial-platform ratings and all 36 documentary-triangulation ratings
 were assigned by a single rater. The paper discloses both in §XI-B, where
