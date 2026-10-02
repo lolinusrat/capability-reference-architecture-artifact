@@ -1,10 +1,28 @@
 {
-  "title": "Replication package for: A Capability-Based Reference Architecture for Enterprise AI Platforms",
+  "title": "Replication package for: From Requirements to Testable Boundaries: Measuring Change Containment Under Technology Substitution in Enterprise AI Platforms",
   "upload_type": "dataset",
-  "creators": [{"name": "Loli, Nusrat", "affiliation": "Independent Researcher",
-                 "orcid": "0009-0007-2942-8261"}],
-  "description": "Evidence and reproduction steps for the paper's derivation and evaluation claims: requirements traceability, alternative decompositions, the 40-cell commercial-platform evidence matrix (Table 4), the 36-cell documentary triangulation (Table 5), the falsification assessment, and the frozen protocol, interface inventories, results and negative control of the technology-substitution experiment.",
+  "creators": [
+    {
+      "name": "Loli, Nusrat",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0007-2942-8261"
+    }
+  ],
+  "description": "Evidence and reproduction steps for the paper's derivation and evaluation claims. Version 1 content is preserved: requirements traceability, alternative decompositions, the 40-cell commercial-platform evidence matrix, the 36-cell documentary triangulation, the falsification assessment, and the Model Services technology-substitution experiment (F3) with its negative control. Version 2 adds two dated corrections to the F3 results record and the complete record of the second substitution test (T3, AI Runtime response cache, in-process to Redis): protocol, frozen records for each freeze, harness and test-only recorder, fixed inputs, repairs and regression tests, and the evidence of all three runs, including the two unsuccessful runs that exposed the packaging and cache-key defects. It also adds the complete record of the third test (T4, Knowledge Services, pgvector and Qdrant built against the pre-existing retrieval contract, then substituted by configuration): protocol, frozen corpus, queries and inventory, both adapters' introduction records, the frozen harness and test-only recorder, the run evidence, the report and the review decision. T4's containment held while two behavioural assertions failed; both outcomes are reported as recorded. The screening decision not to run two further drafted tests is included.",
   "license": "cc-by-4.0",
-  "keywords": ["enterprise AI platform", "reference architecture", "capability model",
-               "software architecture", "technology substitution", "replication package"]
+  "keywords": [
+    "Qdrant",
+    "Redis",
+    "capability model",
+    "change containment",
+    "enterprise AI platform",
+    "pgvector",
+    "reference architecture",
+    "replication package",
+    "response cache",
+    "retrieval-augmented generation",
+    "software architecture",
+    "technology substitution"
+  ],
+  "version": "2"
 }

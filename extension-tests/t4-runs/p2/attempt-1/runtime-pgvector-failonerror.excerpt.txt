@@ -1,0 +1,5 @@
+# Excerpt of t4-runs/p2/attempt-1/runtime-pgvector-failonerror.log (raw runtime log not included in the package).
+# Original SHA-256: 6be1eda041d265c65f56ca113443421ccf4e49daddf86adbada4188b5342e8de
+# Lines kept: those matching /Started RuntimeServiceApplication|APPLICATION FAILED|T4-RECORDER-ERROR|retriever \S+ failed/. Local root path shown as <prototypes-root>.
+
+2026-10-02T03:44:23.494-07:00  INFO [enterprise-ai-runtime-service,,] 40877 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.605 seconds (process running for 1.812)

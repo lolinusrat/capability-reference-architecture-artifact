@@ -67,6 +67,38 @@ The complete change footprint is one file,
 
 No Java file was created, deleted or modified in any module, in any repository.
 
+**Record correction (30 September 2026).** The four-item list above is
+incomplete. Compared with its committed version on 30 September 2026, the
+configuration file contains three further changes:
+
+5. `vllm-internal` set `enabled: true`.
+6. The embeddings profile's route changed from `openai-prod` to `vllm-internal`
+   (model `text-embedding-3-large`).
+7. `vllm-internal`'s `base-url` changed from `http://vllm.internal:8000/v1` to
+   `http://localhost:11434/v1`, the OpenAI-compatible endpoint of the local Ollama
+   runtime.
+
+*What the evidence establishes.* Changes 5 and 6 were part of the substitution
+before its first build: the failure in §4.1 names `vllm/text-embedding-3-large`,
+and the check that produced it (`ContextLoadTest.enabledRoutesArePriced`)
+considers only enabled deployments. Change 7 matches attempt 2 of the
+discrimination case (§7), which required `vllm-internal` at a reachable endpoint.
+The file's last-modified time, 02:53:41 on 5 September 2026, is the same second
+as that of `technology-substitution.after.sha256`, and it has not changed since,
+so the file's current state is its state when the after-inventory was generated.
+The order of changes 5–7 relative to one another, and how attempt 3's
+configuration was applied and removed, cannot be established from the file.
+
+*What it does not change.* All seven changes are in the same file, inside Model
+Services: the footprint remains one file, and the interface inventory, which
+covers Java interface files, is unaffected. The chat profile routes only to
+`ollama-local`, and the live invocation in §5 records `provider: ollama` with a
+single routing attempt, so the heterogeneous chat substitution, from the OpenAI
+wire protocol to Ollama's, is unaffected. Changes 5 and 6 do mean that the
+within-domain failure in §4.1 was triggered by an embeddings route this list did
+not report; the Ollama chat route also required, and received, an explicit
+zero-price entry. The inventories and results above are left as recorded.
+
 ### 4.1 A within-domain failure, caught by the domain's own invariant
 
 The first build after the substitution **failed**: 152 tests ran and
@@ -279,3 +311,37 @@ This screening was performed after the experiment reported above and is recorded
 here, outside the frozen protocol, so that it cannot be read as having been part
 of the pre-specified design.
 
+
+**Record correction (30 September 2026).** The statement in §11.2 that no domain
+in the present instantiation other than Model Services satisfies (a), (b) and
+(c) is incorrect. The screening examined only the three candidates in the table
+above; it did not survey every service-provider interface in the instantiation.
+A survey of the prototype repositories on 30 September 2026 found one further
+candidate that meets all three conditions:
+
+- **Contract (a).** The `ResponseCache` SPI,
+  `Enterprise_AI_Runtime_Service/runtime-common/src/main/java/com/enterprise/ai/runtime/common/spi/ResponseCache.java`,
+  first committed in `a68e2b06` on 5 August 2026 (git-verified), a month before
+  this experiment was contemplated.
+- **Realizations (b).** `CaffeineResponseCache` (process-local) and
+  `RedisResponseCache` (distributed, reached over the network), both in
+  `runtime-cache`. `NoOpResponseCache` is a disable switch and is not counted.
+- **Consumers (c).** The orchestration stages that use the cache
+  (`ResponseCacheLookupStage`, `PostInferenceProcessor`,
+  `RuntimeOrchestrationConfiguration`) name only the SPI, and
+  `runtime-orchestration` depends on `runtime-common`, not `runtime-cache`. The
+  only non-test class naming a concrete realization is
+  `RuntimeCacheConfiguration`, which selects one by the `runtime.cache.provider`
+  property.
+
+Two caveats bear on any test of it. `RedisResponseCache` has no unit test, and no
+integration test exercises it. And the paper does not assign response caching to
+a capability domain, so a test would need that placement declared before
+execution, as a retrospective judgment rather than something the architecture
+specified.
+
+**This establishes eligibility only.** No substitution has been performed on this
+candidate, and nothing in this correction is a result. The screening outcome for
+the three candidates above and the F3 result are unchanged. The same survey
+examined the other repositories under the prototypes root, which lie outside the
+reference instantiation; none of their candidates met all three conditions.

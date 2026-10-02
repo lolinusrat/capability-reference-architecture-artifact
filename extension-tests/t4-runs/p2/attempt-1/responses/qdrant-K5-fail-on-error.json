@@ -1,0 +1,1 @@
+{"error":{"type":"retrieval_error","message":"retrieval failed via qdrant: org.springframework.web.reactive.function.client.WebClientRequestException: Connection refused: /127.0.0.1:16333","details":{"retryable":true,"strategy":"qdrant"}}}

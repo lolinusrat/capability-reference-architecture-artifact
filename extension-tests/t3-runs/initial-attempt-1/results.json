@@ -1,0 +1,14 @@
+{
+  "_run": {
+    "label": "initial",
+    "status": "incomplete",
+    "phase": "B5-keys-probe",
+    "started_utc": "2026-09-30T08:33:31Z",
+    "recorder_errors": [],
+    "exception": "Traceback (most recent call last):\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 740, in run\n    self.phase(\"build\"); self.build()\n                         ~~~~~~~~~~^^\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 302, in build\n    self.recorder_jar = Path(self.sh(str(HERE / \"recorder\" / \"build-recorder.sh\"),\n                             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                     str(self.out / \"recorder-build\")).splitlines()[-1])\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 187, in sh\n    return subprocess.run(args, capture_output=True, text=True, check=check).stdout.strip()\n           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '('<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/recorder/build-recorder.sh', 't3-runs/initial/recorder-build')' returned non-zero exit status 1.\n",
+    "cleanup_errors": [],
+    "probe_exception": "Traceback (most recent call last):\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 760, in run\n    self.phase(\"B5-keys-probe\"); self.b5_keys_probe()\n                                 ~~~~~~~~~~~~~~~~~~^^\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 723, in b5_keys_probe\n    raise RuntimeError(f\"key probe failed: {r.stderr.strip()[-500:]}\")\nRuntimeError: key probe failed: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run-key-probe.sh: line 29: t3-runs/initial/b5-keys-probe/classpath.txt: No such file or directory\n",
+    "runtime_repository_unchanged_by_harness": false,
+    "finished_utc": "2026-09-30T08:33:40Z"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "_status": "FROZEN (T4-P0). Synthetic documents; no real data.",
+  "documents": [
+    {
+      "id": "acme-refunds",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/refunds",
+      "metadata": {
+        "title": "Refund policy"
+      },
+      "content": "Customers may request a refund within 30 days of purchase with the original receipt."
+    },
+    {
+      "id": "acme-travel",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/travel",
+      "metadata": {
+        "title": "Travel policy"
+      },
+      "content": "Economy class applies to flights under six hours; business class requires director approval."
+    },
+    {
+      "id": "acme-expenses",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/expenses",
+      "metadata": {
+        "title": "Expense approval"
+      },
+      "content": "Expenses above 5000 dollars need approval from the cost-centre owner before payment."
+    },
+    {
+      "id": "acme-passwords",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/passwords",
+      "metadata": {
+        "title": "Password rotation"
+      },
+      "content": "Passwords rotate every 90 days and must not reuse the last five passwords."
+    },
+    {
+      "id": "acme-remote",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/remote-work",
+      "metadata": {
+        "title": "Remote work"
+      },
+      "content": "Employees may work remotely three days per week with manager agreement."
+    },
+    {
+      "id": "acme-laptops",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/equipment",
+      "metadata": {
+        "title": "Laptop replacement"
+      },
+      "content": "Laptops are replaced every four years or earlier when repair costs exceed half the value."
+    },
+    {
+      "id": "acme-parental",
+      "version": "1",
+      "tenant": "acme",
+      "source": "policy/leave",
+      "metadata": {
+        "title": "Parental leave"
+      },
+      "content": "Parental leave is sixteen weeks at full pay for the primary carer."
+    },
+    {
+      "id": "acme-salary-bands",
+      "version": "1",
+      "tenant": "acme",
+      "source": "hr/compensation",
+      "metadata": {
+        "title": "Salary bands",
+        "classification": "restricted"
+      },
+      "content": "Salary bands for grades five to nine are reviewed each March by the compensation committee."
+    },
+    {
+      "id": "globex-refunds",
+      "version": "1",
+      "tenant": "globex",
+      "source": "policy/refunds",
+      "metadata": {
+        "title": "Refund policy"
+      },
+      "content": "Globex issues store credit rather than a refund after 14 days from delivery."
+    },
+    {
+      "id": "globex-travel",
+      "version": "1",
+      "tenant": "globex",
+      "source": "policy/travel",
+      "metadata": {
+        "title": "Travel policy"
+      },
+      "content": "All Globex travel is booked through the internal portal at least two weeks ahead."
+    },
+    {
+      "id": "globex-security",
+      "version": "1",
+      "tenant": "globex",
+      "source": "policy/security",
+      "metadata": {
+        "title": "Badge access"
+      },
+      "content": "Visitors to Globex sites must be escorted and wear a temporary badge."
+    },
+    {
+      "id": "globex-holidays",
+      "version": "1",
+      "tenant": "globex",
+      "source": "policy/leave",
+      "metadata": {
+        "title": "Public holidays"
+      },
+      "content": "Globex observes eleven public holidays and one floating cultural day each year."
+    }
+  ]
+}

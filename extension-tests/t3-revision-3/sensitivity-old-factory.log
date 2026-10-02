@@ -1,0 +1,30 @@
+[ERROR] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.237 s <<< FAILURE! -- in com.enterprise.ai.runtime.cache.response.ResponseCacheKeyCrossProcessTest
+[ERROR] com.enterprise.ai.runtime.cache.response.ResponseCacheKeyCrossProcessTest.keysAreIdenticalAcrossDifferentlyPerturbedProcesses -- Time elapsed: 0.147 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+[key for history case 1] 
+expected: "eair:v1:6db754a4b5706e40cff4f67389a271cbbfcdb4432bf8bfedb21ee153f1971f97"
+ but was: "eair:v1:32daba133a9ef78981ecad332642f8b9e52085bb93d3e498b527e609a6f50b52"
+	at com.enterprise.ai.runtime.cache.response.ResponseCacheKeyCrossProcessTest.keysAreIdenticalAcrossDifferentlyPerturbedProcesses(ResponseCacheKeyCrossProcessTest.java:48)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+
+[ERROR] Failures: 
+[ERROR]   ResponseCacheKeyCrossProcessTest.keysAreIdenticalAcrossDifferentlyPerturbedProcesses:48 [key for history case 1] 
+expected: "eair:v1:6db754a4b5706e40cff4f67389a271cbbfcdb4432bf8bfedb21ee153f1971f97"
+ but was: "eair:v1:32daba133a9ef78981ecad332642f8b9e52085bb93d3e498b527e609a6f50b52"
+[ERROR] Tests run: 2, Failures: 1, Errors: 0, Skipped: 0
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project runtime-cache: There are test failures.
+[ERROR] 
+[ERROR] Please refer to <prototypes-root>/Enterprise_AI_Runtime_Service/runtime-cache/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :runtime-cache

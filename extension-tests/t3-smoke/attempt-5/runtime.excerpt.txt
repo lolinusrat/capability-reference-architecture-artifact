@@ -1,0 +1,10 @@
+# Excerpt of t3-smoke/attempt-5/runtime.log (raw runtime log not included in the package).
+# Original SHA-256: 759066719a7673a3532b670787ea5ce71cb858468c8fba38bc2daf1066c78372
+# Lines kept: those matching /T3-RECORDER-ERROR|Started RuntimeServiceApplication/. Local root path shown as <prototypes-root>.
+
+T3-RECORDER-ERROR instance=smoke recorder-installed seq 1: java.nio.file.FileSystemException: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-smoke/attempt-5/unwritable-dir: Is a directory
+2026-09-30T01:16:04.091-07:00  INFO [enterprise-ai-runtime-service,,] 48059 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.236 seconds (process running for 1.448)
+T3-RECORDER-ERROR instance=smoke lookup-called seq 2: java.nio.file.FileSystemException: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-smoke/attempt-5/unwritable-dir: Is a directory
+T3-RECORDER-ERROR instance=smoke store-called seq 3: java.nio.file.FileSystemException: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-smoke/attempt-5/unwritable-dir: Is a directory
+T3-RECORDER-ERROR instance=smoke lookup-called seq 4: java.nio.file.FileSystemException: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-smoke/attempt-5/unwritable-dir: Is a directory
+T3-RECORDER-ERROR instance=smoke lookup-returned seq 5: java.nio.file.FileSystemException: <prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-smoke/attempt-5/unwritable-dir: Is a directory

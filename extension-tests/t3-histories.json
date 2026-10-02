@@ -1,0 +1,269 @@
+{
+  "_note": "Fixed input for T3 assertion B5b. DRAFT, NOT FROZEN. Roles are the runtime's Role enum values. Cases 7-8 differ only by role and 9-10 only by order, so a key that ignored role or order would be caught.",
+  "histories": [
+    {
+      "id": "H01",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "What is our refund window?"
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "messages": [
+        {
+          "role": "ASSISTANT",
+          "content": "Hello, how can I help?"
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "messages": [
+        {
+          "role": "SYSTEM",
+          "content": "Answer briefly."
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Summarise the travel policy."
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "Economy class for flights under six hours."
+        }
+      ]
+    },
+    {
+      "id": "H05",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Summarise the travel policy."
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "Economy class for flights under six hours."
+        },
+        {
+          "role": "USER",
+          "content": "And over six hours?"
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "messages": [
+        {
+          "role": "SYSTEM",
+          "content": "You are a support assistant."
+        },
+        {
+          "role": "USER",
+          "content": "Reset my password."
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "I have sent a reset link."
+        },
+        {
+          "role": "USER",
+          "content": "It expired."
+        }
+      ]
+    },
+    {
+      "id": "H07",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Same text, user role."
+        }
+      ]
+    },
+    {
+      "id": "H08",
+      "messages": [
+        {
+          "role": "ASSISTANT",
+          "content": "Same text, user role."
+        }
+      ]
+    },
+    {
+      "id": "H09",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "First question."
+        },
+        {
+          "role": "USER",
+          "content": "Second question."
+        }
+      ]
+    },
+    {
+      "id": "H10",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Second question."
+        },
+        {
+          "role": "USER",
+          "content": "First question."
+        }
+      ]
+    },
+    {
+      "id": "H11",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Translate 'thank you' into French."
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "Merci."
+        }
+      ]
+    },
+    {
+      "id": "H12",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Translate 'thank you' into French."
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "Merci."
+        },
+        {
+          "role": "USER",
+          "content": "And into German?"
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "Danke."
+        }
+      ]
+    },
+    {
+      "id": "H13",
+      "messages": [
+        {
+          "role": "SYSTEM",
+          "content": "Cite sources."
+        },
+        {
+          "role": "USER",
+          "content": "Who approves expenses over 5,000?"
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "The cost-centre owner, per section 4.2."
+        }
+      ]
+    },
+    {
+      "id": "H14",
+      "messages": [
+        {
+          "role": "USER",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "id": "H15",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Unicode: café, naïve, 数据, émoji 🚀"
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Line one\nLine two\ttabbed"
+        }
+      ]
+    },
+    {
+      "id": "H17",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "H18",
+      "messages": [
+        {
+          "role": "USER",
+          "content": "Q1"
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "A1"
+        },
+        {
+          "role": "USER",
+          "content": "Q2"
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "A2"
+        },
+        {
+          "role": "USER",
+          "content": "Q3"
+        },
+        {
+          "role": "ASSISTANT",
+          "content": "A3"
+        }
+      ]
+    },
+    {
+      "id": "H19",
+      "messages": [
+        {
+          "role": "SYSTEM",
+          "content": "Policy mode."
+        },
+        {
+          "role": "SYSTEM",
+          "content": "Strict mode."
+        }
+      ]
+    },
+    {
+      "id": "H20",
+      "messages": [
+        {
+          "role": "ASSISTANT",
+          "content": "Earlier answer."
+        },
+        {
+          "role": "USER",
+          "content": "Follow-up without a system prompt."
+        }
+      ]
+    }
+  ]
+}

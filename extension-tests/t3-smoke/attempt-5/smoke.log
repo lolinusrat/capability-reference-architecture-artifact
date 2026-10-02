@@ -1,0 +1,12 @@
+[08:15:59Z] runtime revision: 7e44342b2fe82414f297f4fcf517c858c6428257; status: 0 changed files
+[08:15:59Z] building runtime-api from current source
+[08:16:01Z] jar sha256: 32c2ad358df06432ebec996634a743678bb113baa43ad3f48f4e63651a33d899
+[08:16:01Z] starting stub gateway (wiremock/wiremock:3.9.1) on 18080
+[08:16:02Z] starting runtime (Caffeine) on 18081
+[08:16:02Z] loading recorder 61f6079fed3d9c8539cb2d1040e45351ced9e24499189ffb3610011992990f0d
+[08:16:04Z] ready: {"status":"UP","checks":{"configuration":"UP","configurationVersion":"local-configuration","modelGateway":"UP"}}
+[08:16:04Z] request 1: HTTP 200; gateway calls: 1
+[08:16:04Z] request 2: HTTP 200; gateway calls: 1
+[08:16:04Z] first response:  {"content":"Refunds are accepted within 30 days [source: refunds-policy].","provider":"stub","model":"stub-model","modelProfile":"enterprise-chat","promptVersion":"v1.4","usage":{"inputTokens":120,"outputTokens":14,"cachedInputTokens":0},"cost":{"inputCost":"0.00012000","outputCost":"0.00002800","currency":"USD"},"finishReason":"STOP","cached":false,"evaluationScore":1.0,"metadata":{"approval.status":"NOT_REQUIRED","policy.version":"local-configuration","model":"stub-model","modelProfile":"enterprise-chat","configuration.version":"local-configuration","prompt.version":"v1.4","provider":"stub"}}
+[08:16:04Z] second response: {"content":"Refunds are accepted within 30 days [source: refunds-policy].","provider":"stub","model":"stub-model","modelProfile":"enterprise-chat","promptVersion":"v1.4","usage":{"inputTokens":120,"outputTokens":14,"cachedInputTokens":0},"cost":{"inputCost":"0","outputCost":"0","currency":"USD"},"finishReason":"CACHED","cached":true,"evaluationScore":1.0,"metadata":{"approval.status":"NOT_REQUIRED","policy.version":"local-configuration","model":"stub-model","modelProfile":"enterprise-chat","configuration.version":"local-configuration","prompt.version":"v1.4","provider":"stub"}}
+[08:16:04Z] runtime repository status after run: 0 changed files

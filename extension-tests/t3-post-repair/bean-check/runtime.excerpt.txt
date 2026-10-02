@@ -1,0 +1,5 @@
+# Excerpt of t3-post-repair/bean-check/runtime.log (raw runtime log not included in the package).
+# Original SHA-256: d127eb91791ade7e2c1b260ca3a7864673dc455fb5938762866de64ee97f1474
+# Lines kept: those matching /Started RuntimeServiceApplication|APPLICATION FAILED|T3-RECORDER-ERROR/. Local root path shown as <prototypes-root>.
+
+2026-09-30T01:52:51.614-07:00  INFO [enterprise-ai-runtime-service,,] 54610 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.535 seconds (process running for 1.755)

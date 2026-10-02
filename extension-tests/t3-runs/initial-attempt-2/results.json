@@ -1,0 +1,32 @@
+{
+  "_run": {
+    "label": "initial",
+    "status": "incomplete",
+    "phase": "B5-keys-probe",
+    "started_utc": "2026-09-30T08:46:33Z",
+    "recorder_errors": [],
+    "runtime_revision": "7e44342b2fe82414f297f4fcf517c858c6428257",
+    "runtime_jar_sha256": "fa8ee5cb52d14620bc59d8c7b3a6b01715152298b9345c589077f190fcfd8282",
+    "recorder_jar_sha256": "e5d5bf7c8275e81649a10b494c55ab95d499ae9789aa08602d8ec886c8ddf48e",
+    "recorder_startup": {
+      "A": {
+        "clean": true,
+        "problems": []
+      }
+    },
+    "redis_image_id": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "exception": "Traceback (most recent call last):\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 745, in run\n    self.start_runtime(\"A\", PORT_A, \"redis\")\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 344, in start_runtime\n    self._wait(lambda: self.http(\"GET\", f\"http://localhost:{port}/v1/ready\")[0] == 200, 120)\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/run_t3.py\", line 377, in _wait\n    raise TimeoutError(\"service did not become ready\")\nTimeoutError: service did not become ready\n",
+    "cleanup_errors": [],
+    "runtime_repository_unchanged_by_harness": true,
+    "finished_utc": "2026-09-30T08:49:16Z"
+  },
+  "B5-keys-probe (observation: independent same-build JVMs, not the runtime instances)": {
+    "outcome": "OBSERVATION",
+    "evidence": {
+      "ids_in_A": 20,
+      "ids_in_B": 20,
+      "ids_missing_on_one_side": [],
+      "histories_with_differing_keys": []
+    }
+  }
+}

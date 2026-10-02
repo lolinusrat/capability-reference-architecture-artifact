@@ -1,0 +1,5 @@
+# Excerpt of t4-runs/p2/attempt-1/runtime-qdrant-failonerror.log (raw runtime log not included in the package).
+# Original SHA-256: 028fae2a2235b4d85c4442d9c9fa79bdd747702415ea48daacb97f44fe30e820
+# Lines kept: those matching /Started RuntimeServiceApplication|APPLICATION FAILED|T4-RECORDER-ERROR|retriever \S+ failed/. Local root path shown as <prototypes-root>.
+
+2026-10-02T03:44:51.357-07:00  INFO [enterprise-ai-runtime-service,,] 41097 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.532 seconds (process running for 1.731)

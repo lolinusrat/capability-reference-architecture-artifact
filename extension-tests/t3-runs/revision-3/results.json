@@ -1,0 +1,524 @@
+{
+  "_run": {
+    "label": "post-repair",
+    "status": "complete",
+    "phase": "B5-keys-probe",
+    "started_utc": "2026-09-30T09:14:16Z",
+    "recorder_errors": [],
+    "runtime_revision": "7e44342b2fe82414f297f4fcf517c858c6428257",
+    "runtime_jar_sha256": "65284eee95353346ea164af81a690ff3dde59e2b8de3872788db4f28b4f81e0e",
+    "recorder_jar_sha256": "53e9cb0346445b1278864a227d1b299c2ed3e34770ce3e35fe52c975789efbc8",
+    "recorder_startup": {
+      "A": {
+        "clean": true,
+        "problems": []
+      },
+      "B": {
+        "clean": true,
+        "problems": []
+      }
+    },
+    "redis_image_id": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "cleanup_errors": [],
+    "runtime_repository_unchanged_by_harness": false,
+    "finished_utc": "2026-09-30T09:20:27Z"
+  },
+  "B1 hit is real": {
+    "outcome": "PASS",
+    "evidence": {
+      "first": "silent-miss",
+      "second": "observed-hit",
+      "new_redis_keys": [
+        "eair:v1:2b2305ec212de69e1c96bbe6cda30e72b78784bd2e779a9cd48ee2efb2878c91"
+      ],
+      "keys_SET_(MONITOR)": [
+        "eair:v1:2b2305ec212de69e1c96bbe6cda30e72b78784bd2e779a9cd48ee2efb2878c91"
+      ],
+      "recorder_key_first": "eair:v1:2b2305ec212de69e1c96bbe6cda30e72b78784bd2e779a9cd48ee2efb2878c91",
+      "recorder_key_second": "eair:v1:2b2305ec212de69e1c96bbe6cda30e72b78784bd2e779a9cd48ee2efb2878c91",
+      "recorder_keys_match_redis": true,
+      "recorder_clean": true
+    }
+  },
+  "B2a round-trip through the runtime's serializer": {
+    "outcome": "PASS",
+    "evidence": {
+      "fields_compared": "every record component, recursively",
+      "same_entry_(store key = returned key = Redis key)": true,
+      "mismatches": [],
+      "scale_differences_(reported,_not_mismatches)": []
+    }
+  },
+  "B2b Redis hit equals Caffeine hit (public response)": {
+    "outcome": "PASS",
+    "evidence": {
+      "redis": "observed-hit",
+      "caffeine": "observed-hit"
+    }
+  },
+  "B3 key isolation (exercised dimensions only)": {
+    "outcome": "PASS",
+    "evidence": {
+      "tenant": {
+        "result": "ISOLATED_VERIFIED (key differs; input reached the gateway changed)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": "attributes.ai.tenant_id",
+        "gateway_field_changed": true
+      },
+      "variables": {
+        "result": "ISOLATED_KEY_ONLY (no observable effect on the gateway request for policy-qa)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": null,
+        "gateway_field_changed": null
+      },
+      "response schema": {
+        "result": "ISOLATED_VERIFIED (key differs; input reached the gateway changed)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": "responseSchema",
+        "gateway_field_changed": true
+      },
+      "temperature": {
+        "result": "ISOLATED_VERIFIED (key differs; input reached the gateway changed)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": "temperature",
+        "gateway_field_changed": true
+      },
+      "max output tokens": {
+        "result": "ISOLATED_VERIFIED (key differs; input reached the gateway changed)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": "maxOutputTokens",
+        "gateway_field_changed": true
+      },
+      "model profile": {
+        "result": "ISOLATED_VERIFIED (key differs; input reached the gateway changed)",
+        "kind": "silent-miss",
+        "key_differs_from_base": true,
+        "gateway_field": "modelProfile",
+        "gateway_field_changed": true
+      },
+      "base after variants": "observed-hit"
+    }
+  },
+  "B3 key isolation: prompt version": {
+    "outcome": "NOT_EXERCISABLE",
+    "evidence": {
+      "reason": "policy-qa has a single approved version (v1.4) in this configuration"
+    }
+  },
+  "B3 key isolation: retrieval fingerprint": {
+    "outcome": "NOT_EXERCISABLE",
+    "evidence": {
+      "reason": "no Retriever realization exists (results \u00a711), so the fingerprint cannot vary"
+    }
+  },
+  "B5a cross-instance, one-message history": {
+    "outcome": "PASS",
+    "evidence": {
+      "on_A": "silent-miss",
+      "A_populated_the_entry": true,
+      "on_B": "observed-hit",
+      "recorder_key_A": "eair:v1:8f3a9ecf2995788a0e460010fc69187a21538a7a6fbfe3eacb34c330fd5dcb41",
+      "recorder_key_B": "eair:v1:8f3a9ecf2995788a0e460010fc69187a21538a7a6fbfe3eacb34c330fd5dcb41",
+      "keys_SET_by_A_(MONITOR)": [
+        "eair:v1:8f3a9ecf2995788a0e460010fc69187a21538a7a6fbfe3eacb34c330fd5dcb41"
+      ],
+      "keys_GET_by_B_(MONITOR)": [
+        "eair:v1:8f3a9ecf2995788a0e460010fc69187a21538a7a6fbfe3eacb34c330fd5dcb41"
+      ],
+      "recorder_keys_agree_with_each_other_and_MONITOR": true
+    }
+  },
+  "B5b cross-instance, with history (20 histories)": {
+    "outcome": "PASS",
+    "evidence": {
+      "exercised": 20,
+      "rejected": [],
+      "missed_on_B": [],
+      "A_did_not_populate": [],
+      "recorder_unmeasured": [],
+      "key_or_MONITOR_disagreement": [],
+      "pass_requires": "all 20 exercised, populated by A, observed hits on B, measured by the recorder and corroborated by MONITOR",
+      "per_history": {
+        "H01": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:edd306064e70291914775380fb7f5940af8d68d70777982bcf254dc19644298e",
+          "recorder_key_B": "eair:v1:edd306064e70291914775380fb7f5940af8d68d70777982bcf254dc19644298e",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:edd306064e70291914775380fb7f5940af8d68d70777982bcf254dc19644298e"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:edd306064e70291914775380fb7f5940af8d68d70777982bcf254dc19644298e"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H02": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:ea764d6a13ef04cd12fe75d1770fb9f4befa01013b8878660b2b9da803a054c0",
+          "recorder_key_B": "eair:v1:ea764d6a13ef04cd12fe75d1770fb9f4befa01013b8878660b2b9da803a054c0",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:ea764d6a13ef04cd12fe75d1770fb9f4befa01013b8878660b2b9da803a054c0"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:ea764d6a13ef04cd12fe75d1770fb9f4befa01013b8878660b2b9da803a054c0"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H03": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:82873884aa95c3898eba18b237b8cbfb8ecff1a2fa510cca032f7f04978fb49b",
+          "recorder_key_B": "eair:v1:82873884aa95c3898eba18b237b8cbfb8ecff1a2fa510cca032f7f04978fb49b",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:82873884aa95c3898eba18b237b8cbfb8ecff1a2fa510cca032f7f04978fb49b"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:82873884aa95c3898eba18b237b8cbfb8ecff1a2fa510cca032f7f04978fb49b"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H04": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:84051c738ee21bde59104e0eb7463903d76b669a24152b03aa45fd515c259886",
+          "recorder_key_B": "eair:v1:84051c738ee21bde59104e0eb7463903d76b669a24152b03aa45fd515c259886",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:84051c738ee21bde59104e0eb7463903d76b669a24152b03aa45fd515c259886"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:84051c738ee21bde59104e0eb7463903d76b669a24152b03aa45fd515c259886"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H05": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:ecd0da6f6ae09d360ea057f3659ae09dbe55957eb4c504a99ee60191a7ac5708",
+          "recorder_key_B": "eair:v1:ecd0da6f6ae09d360ea057f3659ae09dbe55957eb4c504a99ee60191a7ac5708",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:ecd0da6f6ae09d360ea057f3659ae09dbe55957eb4c504a99ee60191a7ac5708"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:ecd0da6f6ae09d360ea057f3659ae09dbe55957eb4c504a99ee60191a7ac5708"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H06": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:6024a5e21549f6ee54552c2727102aca39443bee495413136f234056530e4849",
+          "recorder_key_B": "eair:v1:6024a5e21549f6ee54552c2727102aca39443bee495413136f234056530e4849",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:6024a5e21549f6ee54552c2727102aca39443bee495413136f234056530e4849"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:6024a5e21549f6ee54552c2727102aca39443bee495413136f234056530e4849"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H07": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:10956cd3c9c0d77364a9fb8a29a7fdb5956a6cf45d2c577cf7d913b5a9b9b709",
+          "recorder_key_B": "eair:v1:10956cd3c9c0d77364a9fb8a29a7fdb5956a6cf45d2c577cf7d913b5a9b9b709",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:10956cd3c9c0d77364a9fb8a29a7fdb5956a6cf45d2c577cf7d913b5a9b9b709"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:10956cd3c9c0d77364a9fb8a29a7fdb5956a6cf45d2c577cf7d913b5a9b9b709"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H08": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:883427260302a555ce3efea5fdbdf9bf61b17ab593e39fc0df8921d3bfc8e650",
+          "recorder_key_B": "eair:v1:883427260302a555ce3efea5fdbdf9bf61b17ab593e39fc0df8921d3bfc8e650",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:883427260302a555ce3efea5fdbdf9bf61b17ab593e39fc0df8921d3bfc8e650"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:883427260302a555ce3efea5fdbdf9bf61b17ab593e39fc0df8921d3bfc8e650"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H09": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:30e78328482a746f3ea40fe2fd411d70d33c5fdaec8ac386f28a2620d43e9057",
+          "recorder_key_B": "eair:v1:30e78328482a746f3ea40fe2fd411d70d33c5fdaec8ac386f28a2620d43e9057",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:30e78328482a746f3ea40fe2fd411d70d33c5fdaec8ac386f28a2620d43e9057"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:30e78328482a746f3ea40fe2fd411d70d33c5fdaec8ac386f28a2620d43e9057"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H10": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:bccd0139ac468fc2196276c3947daafcd28c6a5fc6120715bd724ed3751ba0cf",
+          "recorder_key_B": "eair:v1:bccd0139ac468fc2196276c3947daafcd28c6a5fc6120715bd724ed3751ba0cf",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:bccd0139ac468fc2196276c3947daafcd28c6a5fc6120715bd724ed3751ba0cf"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:bccd0139ac468fc2196276c3947daafcd28c6a5fc6120715bd724ed3751ba0cf"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H11": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:bf537d0a9160a93e9d29f9c505c53528505e38847b6f51a74f0aa07fc12e1e08",
+          "recorder_key_B": "eair:v1:bf537d0a9160a93e9d29f9c505c53528505e38847b6f51a74f0aa07fc12e1e08",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:bf537d0a9160a93e9d29f9c505c53528505e38847b6f51a74f0aa07fc12e1e08"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:bf537d0a9160a93e9d29f9c505c53528505e38847b6f51a74f0aa07fc12e1e08"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H12": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:f37c8d7750d235f0eaaa0c288af39c00dd3f644f31275bb14bae8cabaa07895b",
+          "recorder_key_B": "eair:v1:f37c8d7750d235f0eaaa0c288af39c00dd3f644f31275bb14bae8cabaa07895b",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:f37c8d7750d235f0eaaa0c288af39c00dd3f644f31275bb14bae8cabaa07895b"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:f37c8d7750d235f0eaaa0c288af39c00dd3f644f31275bb14bae8cabaa07895b"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H13": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:dc4b71c4791c40f627e0fac05cc574866bdcd1b75b5df129d2050e7ad316b9b8",
+          "recorder_key_B": "eair:v1:dc4b71c4791c40f627e0fac05cc574866bdcd1b75b5df129d2050e7ad316b9b8",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:dc4b71c4791c40f627e0fac05cc574866bdcd1b75b5df129d2050e7ad316b9b8"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:dc4b71c4791c40f627e0fac05cc574866bdcd1b75b5df129d2050e7ad316b9b8"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H14": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:a6eccbe3b1790998a57b3b887b87da9810e9580a8ba7c0a49c11fa2070cb2fbe",
+          "recorder_key_B": "eair:v1:a6eccbe3b1790998a57b3b887b87da9810e9580a8ba7c0a49c11fa2070cb2fbe",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:a6eccbe3b1790998a57b3b887b87da9810e9580a8ba7c0a49c11fa2070cb2fbe"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:a6eccbe3b1790998a57b3b887b87da9810e9580a8ba7c0a49c11fa2070cb2fbe"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H15": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:0c1d71ff2ebec69e1a4d5a842e7c7be36439733c18baf7134b5309a556c38204",
+          "recorder_key_B": "eair:v1:0c1d71ff2ebec69e1a4d5a842e7c7be36439733c18baf7134b5309a556c38204",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:0c1d71ff2ebec69e1a4d5a842e7c7be36439733c18baf7134b5309a556c38204"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:0c1d71ff2ebec69e1a4d5a842e7c7be36439733c18baf7134b5309a556c38204"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H16": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:6ee98c0e0c69b4b8e919e888eb1d6e1f5aaada2028930238398e0efc495abb77",
+          "recorder_key_B": "eair:v1:6ee98c0e0c69b4b8e919e888eb1d6e1f5aaada2028930238398e0efc495abb77",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:6ee98c0e0c69b4b8e919e888eb1d6e1f5aaada2028930238398e0efc495abb77"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:6ee98c0e0c69b4b8e919e888eb1d6e1f5aaada2028930238398e0efc495abb77"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H17": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:2a143b698c8bfe1682b6b8e23dc961368cc6697d094672a05898bedb44e58d46",
+          "recorder_key_B": "eair:v1:2a143b698c8bfe1682b6b8e23dc961368cc6697d094672a05898bedb44e58d46",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:2a143b698c8bfe1682b6b8e23dc961368cc6697d094672a05898bedb44e58d46"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:2a143b698c8bfe1682b6b8e23dc961368cc6697d094672a05898bedb44e58d46"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H18": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:89bfd6cba12abcae5850e7acbe82f79ceabecca13519b97157694aba1bd2751a",
+          "recorder_key_B": "eair:v1:89bfd6cba12abcae5850e7acbe82f79ceabecca13519b97157694aba1bd2751a",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:89bfd6cba12abcae5850e7acbe82f79ceabecca13519b97157694aba1bd2751a"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:89bfd6cba12abcae5850e7acbe82f79ceabecca13519b97157694aba1bd2751a"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H19": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:09b8c21efcee04a0b8eb8f2f091d0e2247bb40351b6f94e40a4f275509b5d095",
+          "recorder_key_B": "eair:v1:09b8c21efcee04a0b8eb8f2f091d0e2247bb40351b6f94e40a4f275509b5d095",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:09b8c21efcee04a0b8eb8f2f091d0e2247bb40351b6f94e40a4f275509b5d095"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:09b8c21efcee04a0b8eb8f2f091d0e2247bb40351b6f94e40a4f275509b5d095"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        },
+        "H20": {
+          "on_A": "silent-miss",
+          "A_populated_the_entry": true,
+          "result_on_B": "hit",
+          "recorder_measured": true,
+          "recorder_key_A": "eair:v1:0e078488e7ecff6e59550417462c8224fc501ae471b68253b95154a23aa028a8",
+          "recorder_key_B": "eair:v1:0e078488e7ecff6e59550417462c8224fc501ae471b68253b95154a23aa028a8",
+          "keys_SET_by_A_(MONITOR)": [
+            "eair:v1:0e078488e7ecff6e59550417462c8224fc501ae471b68253b95154a23aa028a8"
+          ],
+          "keys_GET_by_B_(MONITOR)": [
+            "eair:v1:0e078488e7ecff6e59550417462c8224fc501ae471b68253b95154a23aa028a8"
+          ],
+          "recorder_agrees_with_MONITOR": true,
+          "recorder_problems": []
+        }
+      }
+    }
+  },
+  "B5-keys-live (observation: keys the runtime instances used)": {
+    "outcome": "OBSERVATION",
+    "evidence": {
+      "source": "recorder in runtime A and B (a separately computed observation by the same key factory on the same context), cross-checked against MONITOR",
+      "histories_compared": 20,
+      "histories_unmeasured": [],
+      "histories_with_differing_keys": [],
+      "histories_where_recorder_disagrees_with_MONITOR": []
+    }
+  },
+  "B6 policy honoured": {
+    "outcome": "PASS",
+    "evidence": {
+      "opt_out_never_stored": true,
+      "stream_http": 200,
+      "stream_gateway_calls": 1,
+      "chat_gateway_calls_during_stream": 0,
+      "streamed_response_not_stored": true,
+      "stream_recorder_events_consumed": 2,
+      "stream_recorder_clean": true,
+      "stream_recorder_problems": []
+    }
+  },
+  "B4 expiry": {
+    "outcome": "PASS",
+    "evidence": {
+      "redis_reported_ttl_seconds": 300,
+      "ttl_acceptance": "295..300",
+      "store_called_at_utc_(recorder)": "2026-09-30T09:15:01.483940Z",
+      "ttl_read_at_utc": "2026-09-30T09:15:01Z",
+      "expiry_detected_at_utc": "2026-09-30T09:20:01Z",
+      "seconds_from_ttl_read_to_expiry": 300,
+      "poll_interval_seconds": 1,
+      "expired": true,
+      "after_expiry": "silent-miss"
+    }
+  },
+  "B7 degradation": {
+    "outcome": "PASS",
+    "evidence": {
+      "http": 200,
+      "kind": "silent-miss",
+      "seconds": 0.12
+    }
+  },
+  "B5-keys-probe (observation: independent same-build JVMs, not the runtime instances)": {
+    "outcome": "OBSERVATION",
+    "evidence": {
+      "ids_in_A": 20,
+      "ids_in_B": 20,
+      "ids_missing_on_one_side": [],
+      "histories_with_differing_keys": []
+    }
+  }
+}

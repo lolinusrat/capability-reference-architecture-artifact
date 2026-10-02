@@ -1,0 +1,16 @@
+unchanged  [protected]  AI Runtime: ResponseCache SPI
+unchanged  [protected]  AI Runtime: shared model types (ChatOutcome and contents, Message, Role)
+unchanged  [protected]  AI Runtime: outward contract and serialization configuration
+unchanged  [protected]  AI Runtime: runtime configuration
+unchanged  [protected]  AI Runtime: gateway client (as F3)
+unchanged  [protected]  Build: shared dependency declarations
+unchanged  [protected-existing]  AI Runtime: existing cache tests
+unchanged  [protected]  Neighbour: Developer Experience
+unchanged  [protected]  Neighbour: Governance and Security
+unchanged  [protected]  Neighbour: Evaluation
+unchanged  [protected]  Neighbour: Model Services outward contract
+changed    [permitted]  Permitted: cache realizations, key factory, cache wiring
+           modified: Enterprise_AI_Runtime_Service/runtime-cache/pom.xml
+unchanged  [permitted]  Permitted: local Redis service definition
+
+T3 containment: no protected surface changed

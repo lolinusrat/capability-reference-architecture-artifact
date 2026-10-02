@@ -1,0 +1,5 @@
+2026-10-02T03:27:20.904-07:00  INFO [enterprise-ai-runtime-service,,] 31583 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Starting RuntimeServiceApplication using Java 26.0.2 with PID 31583 (<prototypes-root>/Enterprise_AI_Runtime_Service/runtime-api/target/runtime-api-1.0.0-SNAPSHOT-app.jar star
+2026-10-02T03:27:21.987-07:00  WARN [enterprise-ai-runtime-service,,] 31583 --- [enterprise-ai-runtime-service] [           main] [                                                 ] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webHa
+APPLICATION FAILED TO START
+Failed to configure a ConnectionFactory: 'url' attribute is not specified and no embedded database could be configured.
+Reason: Failed to determine a suitable R2DBC Connection URL

@@ -1,0 +1,72 @@
+{
+  "_status": "FROZEN (T4-P0).", "topK": 3, "_ranking": "Returned document ids are recorded per engine; identical rankings are not required.",
+  "queries": [
+    {
+      "id": "Q1",
+      "tenant": "acme",
+      "query": "refund within 30 days receipt",
+      "required": [
+        "acme-refunds"
+      ],
+      "forbidden_tenants": [
+        "globex"
+      ]
+    },
+    {
+      "id": "Q2",
+      "tenant": "acme",
+      "query": "approval for expenses above 5000",
+      "required": [
+        "acme-expenses"
+      ],
+      "forbidden_tenants": [
+        "globex"
+      ]
+    },
+    {
+      "id": "Q3",
+      "tenant": "acme",
+      "query": "how often do passwords rotate",
+      "required": [
+        "acme-passwords"
+      ],
+      "forbidden_tenants": [
+        "globex"
+      ]
+    },
+    {
+      "id": "Q4",
+      "tenant": "globex",
+      "query": "refund store credit after delivery",
+      "required": [
+        "globex-refunds"
+      ],
+      "forbidden_tenants": [
+        "acme"
+      ],
+      "note": "shares 'refund' with acme-refunds: tests isolation (K2)"
+    },
+    {
+      "id": "Q5",
+      "tenant": "globex",
+      "query": "visitor badge escort",
+      "required": [
+        "globex-security"
+      ],
+      "forbidden_tenants": [
+        "acme"
+      ]
+    },
+    {
+      "id": "Q6",
+      "tenant": "acme",
+      "query": "salary bands for grades five to nine",
+      "required": [],
+      "restricted_probe": "acme-salary-bands",
+      "forbidden_tenants": [
+        "globex"
+      ],
+      "note": "K3: caller has no expressible entitlement; records whether the restricted document is returned"
+    }
+  ]
+}

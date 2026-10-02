@@ -1,0 +1,22 @@
+unchanged  [protected]  Shared kernel: runtime-common (Retriever contract, retrieval model, context, identity)
+unchanged  [protected]  AI Runtime consumers: runtime-retrieval sources outside the engine package
+unchanged  [protected]  runtime-retrieval resources (any file type)
+unchanged  [protected]  Orchestration
+unchanged  [protected]  Outward contract and configuration
+unchanged  [protected]  Gateway client
+unchanged  [protected]  Application build
+unchanged  [protected-existing]  Existing retrieval tests
+unchanged  [protected]  Neighbour: Developer Experience
+unchanged  [protected]  Neighbour: Governance and Security
+unchanged  [protected]  Neighbour: Evaluation
+unchanged  [protected]  Neighbour: Model Services outward contract
+changed    [permitted]  Permitted: Knowledge Services realizations (engine package)
+           added: Enterprise_AI_Runtime_Service/runtime-retrieval/src/main/java/com/enterprise/ai/runtime/retrieval/engine/EngineProperties.java
+           added: Enterprise_AI_Runtime_Service/runtime-retrieval/src/main/java/com/enterprise/ai/runtime/retrieval/engine/PgVectorEngineConfiguration.java
+           added: Enterprise_AI_Runtime_Service/runtime-retrieval/src/main/java/com/enterprise/ai/runtime/retrieval/engine/PgVectorRetriever.java
+           added: Enterprise_AI_Runtime_Service/runtime-retrieval/src/main/java/com/enterprise/ai/runtime/retrieval/engine/QueryEmbedder.java
+changed    [permitted]  Permitted: runtime-retrieval build
+           modified: Enterprise_AI_Runtime_Service/runtime-retrieval/pom.xml
+unchanged  [permitted]  Permitted: local service definitions
+
+T4 containment: no protected surface changed

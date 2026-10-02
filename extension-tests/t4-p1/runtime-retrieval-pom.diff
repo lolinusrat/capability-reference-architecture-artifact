@@ -1,0 +1,23 @@
+diff --git a/Enterprise_AI_Runtime_Service/runtime-retrieval/pom.xml b/Enterprise_AI_Runtime_Service/runtime-retrieval/pom.xml
+index 4ba2a233..7d14c47e 100644
+--- a/Enterprise_AI_Runtime_Service/runtime-retrieval/pom.xml
++++ b/Enterprise_AI_Runtime_Service/runtime-retrieval/pom.xml
+@@ -27,6 +27,18 @@
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-autoconfigure</artifactId>
+     </dependency>
++    <!-- T4 engines (Knowledge Services realizations, in the engine package).
++         Embeddings come from Model Services through the existing gateway client. -->
++    <dependency>
++      <groupId>com.enterprise.ai</groupId>
++      <artifactId>runtime-inference</artifactId>
++    </dependency>
++    <!-- JDBC, not R2DBC: the R2DBC driver activates Spring Boot's R2DBC
++         auto-configuration application-wide (T4 finding P1-1, deviation P1-D1). -->
++    <dependency>
++      <groupId>org.postgresql</groupId>
++      <artifactId>postgresql</artifactId>
++    </dependency>
+     <dependency>
+       <groupId>com.enterprise.ai</groupId>
+       <artifactId>runtime-common</artifactId>

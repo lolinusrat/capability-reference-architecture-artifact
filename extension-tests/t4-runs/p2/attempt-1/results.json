@@ -1,0 +1,297 @@
+{
+  "_run": {
+    "status": "complete",
+    "phase": "containment",
+    "recorder_errors": [],
+    "started_utc": "2026-10-02T10:43:36Z",
+    "runtime_revision": "7e44342b2fe82414f297f4fcf517c858c6428257",
+    "runtime_jar_sha256": "32d4f0f72668bd80e5c1d20dfdac645bb1cbcbf7570d75c04e128c034dd1c102",
+    "recorder_jar_sha256": "ffc7cab98353b2f21b17cfd37a125a06bc793b756da2b703db43291bb4e7f130",
+    "pgvector_image_id": "sha256:ccc6e83d6e35e931dc7c5def2022729d5a6c370318d099181995567ff1fb4d6b",
+    "qdrant_image_id": "sha256:12364fe851b9f17356fc88189fc06d1b521262e04659ec7345975b00c9246a10",
+    "recorder_startup": {
+      "pgvector": {
+        "clean": true,
+        "installed": [
+          "pgvector"
+        ]
+      },
+      "pgvector-failonerror": {
+        "clean": true,
+        "installed": [
+          "pgvector"
+        ]
+      },
+      "qdrant": {
+        "clean": true,
+        "installed": [
+          "qdrant"
+        ]
+      },
+      "qdrant-failonerror": {
+        "clean": true,
+        "installed": [
+          "qdrant"
+        ]
+      }
+    },
+    "finished_utc": "2026-10-02T10:45:03Z"
+  },
+  "K1 retrieval (pgvector)": {
+    "outcome": "PASS",
+    "evidence": {
+      "failures": [],
+      "unmeasured": [],
+      "rule": "every required document returned by the engine (recorder) and present in the prompt the gateway received"
+    }
+  },
+  "K2 tenant isolation (pgvector)": {
+    "outcome": "PASS",
+    "evidence": {
+      "cross_tenant_documents": [],
+      "unmeasured": []
+    }
+  },
+  "K3 access beyond tenant (pgvector)": {
+    "outcome": "OBSERVATION",
+    "evidence": {
+      "restricted_document": "acme-salary-bands",
+      "returned_to_unentitled_caller": true,
+      "prediction_P_acl": "the contract cannot express entitlement, so the document is returned",
+      "prediction_held": true,
+      "information_missing": "a Security decision or caller entitlements reachable from ExecutionContext"
+    }
+  },
+  "K4 citation metadata (pgvector)": {
+    "outcome": "PASS",
+    "evidence": {
+      "mismatches": [],
+      "unmeasured": []
+    }
+  },
+  "K5 failure behaviour (pgvector)": {
+    "outcome": "FAIL",
+    "evidence": {
+      "fail_on_error_false": {
+        "http": 200,
+        "marked_degraded": true,
+        "retrieved_into_prompt": [],
+        "engine_error_recorded": true,
+        "raw_error_text_in_response": [],
+        "response_metadata": {
+          "prompt.version": "v1.4",
+          "provider": "stub",
+          "retrieval.strategy": "pgvector",
+          "model": "stub-model",
+          "retrieval.documents": "0",
+          "approval.status": "NOT_REQUIRED",
+          "policy.version": "local-configuration",
+          "configuration.version": "local-configuration",
+          "modelProfile": "enterprise-chat",
+          "retrieval.degraded": "pgvector"
+        }
+      },
+      "fail_on_error_true": {
+        "http": 502,
+        "error_type": "retrieval_error",
+        "error_message": "retrieval failed via pgvector: org.postgresql.util.PSQLException: Connection to 127.0.0.1:15432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.",
+        "raw_error_text_in_response": [
+          "PSQLException",
+          "org.postgresql",
+          "SQLException",
+          "Exception:"
+        ]
+      },
+      "raw_error_markers": [
+        "PSQLException",
+        "org.postgresql",
+        "SQLException",
+        "Connection refused",
+        "ConnectException",
+        "WebClientRequestException",
+        "WebClientResponseException",
+        "io.netty",
+        "java.net.",
+        "Exception:"
+      ]
+    }
+  },
+  "K1 retrieval (qdrant)": {
+    "outcome": "PASS",
+    "evidence": {
+      "failures": [],
+      "unmeasured": [],
+      "rule": "every required document returned by the engine (recorder) and present in the prompt the gateway received"
+    }
+  },
+  "K2 tenant isolation (qdrant)": {
+    "outcome": "PASS",
+    "evidence": {
+      "cross_tenant_documents": [],
+      "unmeasured": []
+    }
+  },
+  "K3 access beyond tenant (qdrant)": {
+    "outcome": "OBSERVATION",
+    "evidence": {
+      "restricted_document": "acme-salary-bands",
+      "returned_to_unentitled_caller": true,
+      "prediction_P_acl": "the contract cannot express entitlement, so the document is returned",
+      "prediction_held": true,
+      "information_missing": "a Security decision or caller entitlements reachable from ExecutionContext"
+    }
+  },
+  "K4 citation metadata (qdrant)": {
+    "outcome": "PASS",
+    "evidence": {
+      "mismatches": [],
+      "unmeasured": []
+    }
+  },
+  "K5 failure behaviour (qdrant)": {
+    "outcome": "FAIL",
+    "evidence": {
+      "fail_on_error_false": {
+        "http": 200,
+        "marked_degraded": true,
+        "retrieved_into_prompt": [],
+        "engine_error_recorded": true,
+        "raw_error_text_in_response": [],
+        "response_metadata": {
+          "retrieval.degraded": "qdrant",
+          "prompt.version": "v1.4",
+          "provider": "stub",
+          "retrieval.strategy": "qdrant",
+          "model": "stub-model",
+          "retrieval.documents": "0",
+          "approval.status": "NOT_REQUIRED",
+          "policy.version": "local-configuration",
+          "configuration.version": "local-configuration",
+          "modelProfile": "enterprise-chat"
+        }
+      },
+      "fail_on_error_true": {
+        "http": 502,
+        "error_type": "retrieval_error",
+        "error_message": "retrieval failed via qdrant: org.springframework.web.reactive.function.client.WebClientRequestException: Connection refused: /127.0.0.1:16333",
+        "raw_error_text_in_response": [
+          "Connection refused",
+          "WebClientRequestException",
+          "Exception:"
+        ]
+      },
+      "raw_error_markers": [
+        "PSQLException",
+        "org.postgresql",
+        "SQLException",
+        "Connection refused",
+        "ConnectException",
+        "WebClientRequestException",
+        "WebClientResponseException",
+        "io.netty",
+        "java.net.",
+        "Exception:"
+      ]
+    }
+  },
+  "K6 substitution by configuration": {
+    "outcome": "FAIL",
+    "evidence": {
+      "switch": "RUNTIME_RETRIEVAL_ENGINE only",
+      "response_structure_identical": true,
+      "K1_K2_K4_K5_pass_for_both": false
+    }
+  },
+  "K7 cross-engine consistency": {
+    "outcome": "PASS",
+    "evidence": {
+      "required_missing": {},
+      "returned_ids": {
+        "pgvector": {
+          "Q1": [
+            "acme-refunds",
+            "acme-remote",
+            "acme-expenses"
+          ],
+          "Q2": [
+            "acme-expenses",
+            "acme-parental",
+            "acme-salary-bands"
+          ],
+          "Q3": [
+            "acme-passwords",
+            "acme-laptops",
+            "acme-expenses"
+          ],
+          "Q4": [
+            "globex-refunds",
+            "globex-travel",
+            "globex-security"
+          ],
+          "Q5": [
+            "globex-security",
+            "globex-refunds",
+            "globex-travel"
+          ],
+          "Q6": [
+            "acme-salary-bands",
+            "acme-parental",
+            "acme-passwords"
+          ]
+        },
+        "qdrant": {
+          "Q1": [
+            "acme-refunds",
+            "acme-remote",
+            "acme-parental"
+          ],
+          "Q2": [
+            "acme-expenses",
+            "acme-parental",
+            "acme-salary-bands"
+          ],
+          "Q3": [
+            "acme-passwords",
+            "acme-laptops",
+            "acme-parental"
+          ],
+          "Q4": [
+            "globex-refunds",
+            "globex-travel",
+            "globex-security"
+          ],
+          "Q5": [
+            "globex-security",
+            "globex-refunds",
+            "globex-travel"
+          ],
+          "Q6": [
+            "acme-salary-bands",
+            "acme-parental",
+            "acme-passwords"
+          ]
+        }
+      },
+      "note": "identical rankings are not required"
+    }
+  },
+  "Concealment check (embedding requests)": {
+    "outcome": "PASS",
+    "evidence": {
+      "suspicious_keys": [],
+      "checked_for": [
+        "purpose",
+        "input_type",
+        "inputtype",
+        "task",
+        "embedding_type"
+      ]
+    }
+  },
+  "Containment (interface inventory)": {
+    "outcome": "PASS",
+    "evidence": {
+      "summary": "T4 containment: no protected surface changed"
+    }
+  }
+}

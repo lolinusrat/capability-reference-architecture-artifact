@@ -1,0 +1,12 @@
+[08:46:33Z] --- phase: verify histories
+[08:46:33Z] --- phase: build
+[08:46:39Z] --- phase: start gateway
+[08:46:42Z] --- phase: caffeine reference
+[08:46:44Z] runtime A ready on 18081 with CaffeineResponseCache, pid 53239
+[08:46:44Z] b2b-caffeine-miss: HTTP 200 cached=False gateway+1 -> silent-miss; live key eair:v1:aeeed1c08e75…
+[08:46:44Z] b2b-caffeine-hit: HTTP 200 cached=True gateway+0 -> observed-hit; live key eair:v1:aeeed1c08e75…
+[08:46:54Z] --- phase: start redis and runtimes
+[08:49:02Z] RUN INCOMPLETE: TimeoutError: service did not become ready
+[08:49:03Z] --- phase: B5-keys-probe
+[08:49:16Z] == B5-keys-probe (observation: independent same-build JVMs, not the runtime instances): OBSERVATION
+[08:49:16Z] run status: incomplete; results in results.json

@@ -1,0 +1,6 @@
+# Excerpt of t4-runs/p2/attempt-1/runtime-qdrant.log (raw runtime log not included in the package).
+# Original SHA-256: 5b2152a9947a041135cbb971e04a1eeae41d9bae20fcfbd39abfd10c2303142b
+# Lines kept: those matching /Started RuntimeServiceApplication|APPLICATION FAILED|T4-RECORDER-ERROR|retriever \S+ failed/. Local root path shown as <prototypes-root>.
+
+2026-10-02T03:44:36.361-07:00  INFO [enterprise-ai-runtime-service,,] 40992 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.532 seconds (process running for 1.73)
+2026-10-02T03:44:39.034-07:00  WARN [enterprise-ai-runtime-service,,] 40992 --- [enterprise-ai-runtime-service] [ctor-http-nio-1] [                                                 ] c.e.a.r.retrieval.DefaultContextBuilder  : retriever qdrant failed for request 5c997e18-1159-4b5f-a00e-1403f12fbbed, continuing without it: org.springframework.web.reactive.function.client.WebClientRequestException: Connection refused: /127.0.0.1:16333

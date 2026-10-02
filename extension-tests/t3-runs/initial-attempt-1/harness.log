@@ -1,0 +1,5 @@
+[08:33:32Z] --- phase: verify histories
+[08:33:32Z] --- phase: build
+[08:33:36Z] RUN INCOMPLETE: subprocess.CalledProcessError: Command '('<prototypes-root>/sample/research/paper 3 - reference-architecture/extension-tests/t3-harness/recorder/build-recorder.sh', 't3-runs/initial/recorder-build')' returned non-zero exit status 1.
+[08:33:38Z] --- phase: B5-keys-probe
+[08:33:40Z] run status: incomplete; results in results.json

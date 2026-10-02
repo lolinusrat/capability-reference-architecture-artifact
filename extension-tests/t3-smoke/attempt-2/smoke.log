@@ -1,0 +1,12 @@
+[07:59:28Z] runtime revision: 7e44342b2fe82414f297f4fcf517c858c6428257; status: 0 changed files
+[07:59:28Z] building runtime-api from current source
+[07:59:30Z] jar sha256: 387f41cfa298ff4f72fd67b8c644d489ba15913a068a9dbf6b311315ac293a2b
+[07:59:30Z] starting stub gateway (wiremock/wiremock:3.9.1) on 18080
+[07:59:33Z] starting runtime (Caffeine) on 18081
+[07:59:33Z] loading recorder c2e76c93576d8a0d23ab27ed58b0abf4605faf5b94cfdfd9327831b16eb9856e
+[08:01:05Z] ready: 
+[08:01:05Z] request 1: HTTP 000; gateway calls: 0
+[08:01:05Z] request 2: HTTP 000; gateway calls: 0
+[08:01:05Z] first response:  
+[08:01:05Z] second response: 
+[08:01:05Z] runtime repository status after run: 0 changed files

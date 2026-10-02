@@ -1,3 +1,188 @@
+# Replication package — version 2
+
+**Paper:** *From Requirements to Testable Boundaries: Measuring Change Containment
+Under Technology Substitution in Enterprise AI Platforms* (Zenodo preprint). The
+paper was earlier titled *A Capability-Based Reference Architecture for
+Enterprise AI Platforms*; version 1 of this package accompanied that version.
+
+Version 2 **preserves version 1** and adds:
+
+1. **Two dated corrections to `technology-substitution-results.md`** (the Model
+   Services test, F3). They are additions only; every line of the version-1 file
+   is unchanged. §4 lists three configuration changes the original footprint
+   list omitted, and §11 corrects the screening record, which had missed the
+   response-cache candidate.
+2. **The complete record of the second substitution test, T3** (AI Runtime
+   response cache, in-process Caffeine to networked Redis), under
+   `extension-tests/`, laid out as the research folder was, so every frozen
+   record verifies in place. **All three runs are included, including the two
+   unsuccessful ones**, which are the evidence of the two defects and of the
+   contained repairs that followed.
+3. **The complete record of the third test, T4** (Knowledge Services: pgvector
+   and Qdrant built against the pre-existing `Retriever` contract, then switched
+   by configuration), in the same tree.
+   - **Containment held:** no protected surface changed, and switching changed
+     no file.
+   - **Two behavioural assertions failed:**
+     - K5, for both engines: the pre-existing consumer returns raw engine error
+       text to the caller.
+     - K6, by its composite rule.
+   - **K3 recorded a contract limitation.**
+   - **All of it is reported as recorded and was not repaired**
+     (`T4-REVIEW-DECISION.md`).
+4. **The screening decision for T1 and T2** (`t1-t2-screening-decision.md`):
+   both drafted tests were screened out and were not run.
+
+The version-1 README follows below the line; its instructions for F3 and the
+other evidence are unchanged.
+
+## Contents of `extension-tests/`: T3
+
+| Path | What it is |
+|:---|:---|
+| `t3-response-cache-protocol.md` | The protocol, at its final (revision-3) text, with every revision recorded in its §11 |
+| `freeze_interface_inventory_t3.py`, `t3.before.sha256` | The 13-surface interface inventory script and the frozen pre-repair before-inventory |
+| `t3-histories.json` | The 20 fixed conversation histories |
+| `t3-harness/` | The harness (`run_t3.py`), the test-only recorder (source and build script), the independent key probe, and the preparation smoke-run script |
+| `t3.frozen.sha256.md`, `t3-freeze-package.md` | Original freeze (commit `bdbed44`) |
+| `t3-post-repair/` | First repair (packaging), its verification and its freeze (`03ec627`) |
+| `t3-revision-3/` | Second repair (cache key), regression tests, sensitivity check and its freeze (`57761c0`; reviewed revision `0ee4edb`) |
+| `frozen-versions/<commit>/` | Files as they were at an earlier freeze, where they later changed, so each frozen record can be checked against its own versions |
+| `t3-runs/initial-attempt-1/` | Initial run, aborted before measurement (tooling path defect) |
+| `t3-runs/initial-attempt-2/` | Initial run: the Redis realization was not selectable as built (B1–B7 not assessed) |
+| `t3-runs/post-repair/` | After repair 1: within-instance PASSes; cross-instance B5a and B5b FAIL; B4 INCOMPLETE |
+| `t3-runs/revision-3/` | After repair 2: all B1–B7 PASS; two B3 inputs not exercisable. Its `results.json` carries the harness label `post-repair`; it is identified by this directory and its frozen record. |
+| `t3-smoke-run.md`, `t3-smoke/` | Preparation smoke runs (Caffeine only; not part of T3), including the recorder non-interference check |
+| `README.md` | The research folder's own overview, covering T3 and T4. It also mentions the T1 and T2 drafts, which are not included (see below). |
+
+Each run directory holds its report, `results.json`, the harness log, the
+recorder's event files, the Redis `MONITOR` log, the API responses, the key-probe
+outputs, the after-inventory and the containment comparison, where the run
+produced them.
+
+## Contents of `extension-tests/`: T4
+
+| Path | What it is |
+|:---|:---|
+| `t4-knowledge-services-protocol.md`, `t4-p0-package.md` | The protocol (question, contract as found, failure rules, surfaces, assertions K1–K7) and the P0 package |
+| `t4-corpus.json`, `t4-queries.json` | The 12 synthetic documents (two tenants, one restricted) and the six queries |
+| `freeze_interface_inventory_t4.py`, `t4.baseline.sha256` | The 15-surface interface inventory script and the baseline, captured before any adapter |
+| `t4.frozen.sha256.md` | P0 freeze (`87392da`) |
+| `t4-engine-config.md` | Every setting used for each engine, secrets excepted. Rows were added in P1 and P2, as designed; the P0 text is in `frozen-versions/87392da/` |
+| `t4-effort-log.md` | Effort, logged as work happened |
+| `t4-p1/` | Introduction of both adapters: findings and deviations (P1-1: R2DBC broke startup application-wide; P1-D1: JDBC), copies of the engine sources (`engine-src/`), the abandoned R2DBC attempt with its startup-failure excerpt, the build-file diff, and the inventories and comparisons after each engine |
+| `t4-harness/` | The P2 harness (`run_t4.py`), deterministic embedding, stub gateway, corpus loader, and the test-only recorder (source and build script) |
+| `t4-p2.frozen.sha256.md` | P2 harness freeze, before any run (`2fb49a3`) |
+| `t4-runs/p2/attempt-1/` | The run: `results.json`, harness log, recorder events, every API response, runtime-log excerpts, after-inventory and containment comparison |
+| `t4-runs/p2/T4-REPORT.md`, `T4-REVIEW-DECISION.md` | The report, and the reviewer's acceptance (K5 reported as is) |
+| `t1-t2-screening-decision.md` | Why T1 and T2 were not run |
+
+**Verifying T4's records:**
+- `t4.frozen.sha256.md` verifies from `extension-tests/`, with
+  `t4-engine-config.md` checked against `frozen-versions/87392da/`.
+- `t4-p2.frozen.sha256.md` verifies from `extension-tests/` for its harness files
+  and inputs. Its engine-package entries are runtime-relative paths: they verify
+  against the copies in `t4-p1/engine-src/`. The runtime build file is
+  represented by `t4-p1/runtime-retrieval-pom.diff`.
+
+## Reconciliation with the paper (§10.4 and data availability)
+
+| Statement in the paper | Evidence |
+|:---|:---|
+| The cache contract predates the experiment | `technology-substitution-results.md` §11 correction (contract first committed 5 August 2026) |
+| Placement of caching in AI Runtime was a judgment recorded before freezing | `t3-response-cache-protocol.md` §2 |
+| Protocol, 13-surface inventory and 20 histories frozen before execution | `t3.frozen.sha256.md`; `t3.before.sha256` (13 surfaces); `t3-histories.json` |
+| A hit counts only with `cached` true and no gateway call | `t3-harness/run_t3.py`; each run's `results.json` |
+| Seven behavioral assertions | Protocol §7 (B1–B7) |
+| Recorder and `MONITOR` recorded each instance's key | `t3-harness/recorder/`; `recorder-*.jsonl` and `redis-monitor.log` in each run |
+| Initial run: runtime could not start with Redis selected | `t3-runs/initial-attempt-2/INITIAL-RUN-REPORT.md`; `runtime-A-redis.excerpt.txt` |
+| First repair removed the optional declaration in the cache component's build file | `t3-post-repair/repair.diff`; bean check in `t3-post-repair/bean-check/` |
+| No entry shared across instances in any of 21 cases | `t3-runs/post-repair/results.json` (B5a, and B5b with all 20 missed) |
+| Expiry not assessed after the first repair, owing to a harness defect | `t3-runs/post-repair/POST-REPAIR-RUN-REPORT.md`, finding 2 |
+| Second repair encodes history from role names and content | `t3-revision-3/key-repair.diff` |
+| Regression test: pre-repair key diverges across JVMs, repaired key does not | `t3-revision-3/ResponseCacheKeyCrossProcessTest.java`, `CrossProcessKeyComputer.java`, `sensitivity-old-factory.log` |
+| After the second repair every assertion passed, including 20/20 sharing and expiry at 300 s | `t3-runs/revision-3/results.json`; `REVISION-3-RUN-REPORT.md` |
+| Two isolation inputs not exercisable | `t3-runs/revision-3/results.json` (B3) |
+| No protected surface changed in any run | `containment-comparison.txt` in `initial-attempt-2/`, `post-repair/` and `revision-3/` |
+| A repair in the application's build file would have been a containment failure | `t3-freeze-package.md` §4 (manifest) |
+| T3 material is included in the next package version | This version |
+
+T4 is reported in revision 2 of the preprint (Section 10.5 and Table 6), which is
+published after this package version. Its statements correspond to:
+
+- `t4-runs/p2/T4-REPORT.md`: outcomes, findings P2-1 to P2-3, and footprints;
+- `t4-runs/p2/T4-REVIEW-DECISION.md`: K5 reported as is;
+- `t4-p1/P1-FINDINGS-AND-DEVIATIONS.md`: the startup coupling the inventory did
+  not detect, and the move to JDBC.
+
+The screening of T1 and T2 in that revision's Section 11.2 corresponds to
+`t1-t2-screening-decision.md`.
+
+## What was left out, and why
+
+Listed file by file in `EXCLUDED-FILES.txt`:
+
+- **Build artefacts** (`*.jar`, `*.class`, `classpath.txt`). They are reproducible
+  from the included sources, and the classpath files list local build paths. The
+  recorder jar's digest for each run is in that run's `results.json`.
+- **Raw runtime logs** (`runtime*.log`). Where a log is itself evidence, a short
+  excerpt of the relevant lines is included as `*.excerpt.txt`, with the original
+  file's SHA-256, so a holder of the full research repository can verify it:
+  - the initial run's startup failure;
+  - smoke attempt 2's class-version failure;
+  - smoke attempt 5's deliberate recorder-failure lines;
+  - the post-repair bean check;
+  - T4's four runtime starts (startup, recorder diagnostics, degraded-retrieval
+    lines);
+  - T4-P1's R2DBC startup failure. That excerpt was made during P1 and is
+    tracked in the research folder.
+- **The T1 and T2 protocol drafts and the T1 baseline.** Both tests were screened
+  out and never run. Their screening decision is included.
+- **The two classpath files moved out of the runtime repository after initial
+  attempt 1.** Their handling is described in that attempt's
+  `ABORTED-BEFORE-MEASUREMENT.md`.
+
+## Personal information, credentials and redaction
+
+- **No credentials are included.** Model-provider settings in the prototypes are
+  environment-variable references only.
+- **This public copy is redacted.** Four kinds of identifying local detail are
+  replaced:
+  - the author's local prototypes path → `<prototypes-root>`, including its
+    URL-encoded form (T3 and T4 inventories, logs and excerpts);
+  - the home directory → `<home>`, for example in build classpaths;
+  - the machine hostname in key-probe headers → `<host>`;
+  - the operating-system account name in log lines → `<user>`.
+
+  No measured value, key, digest listing or result is changed.
+- **The unredacted evidence is kept privately**, exactly as recorded, with its own
+  manifest. It is not published.
+- **`REDACTIONS.txt`** lists every redacted file, with the SHA-256 of its private
+  original and of this public copy.
+- **Frozen records are not altered.** They list the digests of the originals, so a
+  redacted file here does not match its frozen record. Its original digest, in
+  the first column of `REDACTIONS.txt`, is the one the frozen record lists.
+- Version 1 of this package was published earlier and unredacted. It is not
+  changed by this version.
+
+## Verifying version 2
+
+- **Integrity of this copy:** `shasum -a 256 -c MANIFEST.sha256` checks every file as
+  published.
+- **Frozen records:** each T3 frozen record verifies from `extension-tests/` against
+  the files of its own revision (for T4, see "Verifying T4's records" above).
+  - The revision-3 record verifies against the current files.
+  - The two earlier records verify against `frozen-versions/<commit>/` for the
+    files that later changed, and against the current files for the rest.
+  - **Files listed in `REDACTIONS.txt` are checked through that file:** their
+    frozen-record digest appears there as the original digest. Every other file
+    verifies directly.
+- **Runtime changes:** the two T3 repairs and regression tests, and the T4 engine
+  package, live in the prototypes repository, which is not included, as for F3.
+  Their diffs, copies or before-and-after versions, and their digests are included.
+
+---
+
 # Artifact for: A Capability-Based Reference Architecture for Enterprise AI Platforms
 
 This artifact supports the derivation, evaluation and reproducibility claims made

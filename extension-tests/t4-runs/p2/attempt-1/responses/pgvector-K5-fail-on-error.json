@@ -1,0 +1,1 @@
+{"error":{"type":"retrieval_error","message":"retrieval failed via pgvector: org.postgresql.util.PSQLException: Connection to 127.0.0.1:15432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.","details":{"strategy":"pgvector","retryable":true}}}

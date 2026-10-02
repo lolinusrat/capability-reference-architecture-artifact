@@ -1,0 +1,8 @@
+data:{"type":"delta","text":"Refunds are accepted "}
+
+data:{"type":"delta","text":"within 30 days."}
+
+data:{"type":"final","usage":{"inputTokens":120,"outputTokens":14,"cachedInputTokens":0},"cost":{"inputCost":"0.00012000","outputCost":"0.00002800","currency":"USD"},"finishReason":"STOP","provider":"stub","model":"stub-model"}
+
+data:[DONE]
+

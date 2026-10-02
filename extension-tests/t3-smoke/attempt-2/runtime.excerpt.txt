@@ -1,0 +1,8 @@
+# Excerpt of t3-smoke/attempt-2/runtime.log (raw runtime log not included in the package).
+# Original SHA-256: 95184c2000bb11acd4b1e57f44484112d666359e2269f58a3b7ada76f9c39ccb
+# Lines kept: those matching /Unsupported class file major version|Unable to read meta-data|APPLICATION FAILED|Application run failed/. Local root path shown as <prototypes-root>.
+
+2026-09-30T00:59:33.748-07:00  WARN [enterprise-ai-runtime-service,,] 44540 --- [enterprise-ai-runtime-service] [           main] [                                                 ] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalStateException: Unable to read meta-data for class t3harness.T3RecorderAutoConfiguration
+2026-09-30T00:59:33.761-07:00 ERROR [enterprise-ai-runtime-service,,] 44540 --- [enterprise-ai-runtime-service] [           main] [                                                 ] o.s.boot.SpringApplication               : Application run failed
+java.lang.IllegalStateException: Unable to read meta-data for class t3harness.T3RecorderAutoConfiguration
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 70

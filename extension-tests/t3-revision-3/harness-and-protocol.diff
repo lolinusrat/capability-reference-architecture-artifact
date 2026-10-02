@@ -1,0 +1,113 @@
+diff --git a/extension-tests/t3-harness/run_t3.py b/extension-tests/t3-harness/run_t3.py
+index b931974..2154d70 100755
+--- a/extension-tests/t3-harness/run_t3.py
++++ b/extension-tests/t3-harness/run_t3.py
+@@ -540,6 +540,7 @@ class Harness:
+ 
+     def b5a(self):
+         mark_a = self.monitor_mark()
++        # One user message, which the runtime treats as a one-message history.
+         on_a = self.chat(PORT_A, self.msg("T3 B5a question"), "b5a-on-A")
+         set_a = self.monitor_commands(mark_a, "SET")
+         mark_b = self.monitor_mark()
+@@ -554,7 +555,9 @@ class Harness:
+         outcome = ("FAIL" if on_b["kind"] != "observed-hit"
+                    else "INCOMPLETE" if not (a_populated and measured)
+                    else "PASS" if keys_agree else "INCOMPLETE")
+-        self.record("B5a cross-instance, no history", outcome,
++        # Relabelled (T3 revision 3): the runtime maps every request message into the
++        # history that enters the key, so this request carries a one-message history.
++        self.record("B5a cross-instance, one-message history", outcome,
+                     {"on_A": on_a["kind"], "A_populated_the_entry": a_populated, "on_B": on_b["kind"], "recorder_key_A": on_a["live_key"], "recorder_key_B": on_b["live_key"],
+                      "keys_SET_by_A_(MONITOR)": set_a, "keys_GET_by_B_(MONITOR)": get_b,
+                      "recorder_keys_agree_with_each_other_and_MONITOR": keys_agree})
+@@ -651,6 +654,7 @@ class Harness:
+         optout_ok = (first["kind"] == "silent-miss" and second["kind"] == "silent-miss"
+                      and self.keys() == before_keys)
+         keys_before_stream = self.keys()
++        stream_offset = self.recorder_offset("A")
+         stream_before = self.gateway_count("/v1/inference/stream")
+         chat_before = self.gateway_count("/v1/inference/chat")
+         status, body = self.http("POST", f"http://localhost:{PORT_A}/v1/chat/stream",
+@@ -660,12 +664,26 @@ class Harness:
+         stream_calls = self.gateway_count("/v1/inference/stream") - stream_before
+         chat_calls = self.gateway_count("/v1/inference/chat") - chat_before
+         time.sleep(0.5)
++        # The streamed request bypasses chat(), so its recorder events must be
++        # consumed here. Otherwise the continuity check reports a false gap on the
++        # next request (T3 post-repair run, B4).
++        stream_events, _ = self.recorder_events("A", stream_offset)
++        stream_recorder_ok, stream_recorder_problems = self.recorder_integrity("A", stream_events)
+         stream_ok = (status == 200 and '"final"' in body and stream_calls == 1 and chat_calls == 0
+                      and self.keys() == keys_before_stream)
+-        self.record("B6 policy honoured", "PASS" if optout_ok and stream_ok else "FAIL",
++        # Behaviour decides FAIL, exactly as before. Revision 3 evidence-integrity
++        # correction: when behaviour passes but the streamed request's recorder
++        # evidence is unreliable, B6 is INCOMPLETE, never PASS.
++        behaviour_ok = optout_ok and stream_ok
++        b6_outcome = ("FAIL" if not behaviour_ok
++                      else "PASS" if stream_recorder_ok else "INCOMPLETE")
++        self.record("B6 policy honoured", b6_outcome,
+                     {"opt_out_never_stored": optout_ok, "stream_http": status,
+                      "stream_gateway_calls": stream_calls, "chat_gateway_calls_during_stream": chat_calls,
+-                     "streamed_response_not_stored": self.keys() == keys_before_stream})
++                     "streamed_response_not_stored": self.keys() == keys_before_stream,
++                     "stream_recorder_events_consumed": len(stream_events),
++                     "stream_recorder_clean": stream_recorder_ok,
++                     "stream_recorder_problems": stream_recorder_problems})
+ 
+     def b4(self):
+         before = self.keys()
+diff --git a/extension-tests/t3-response-cache-protocol.md b/extension-tests/t3-response-cache-protocol.md
+index 3897dea..74c1c74 100644
+--- a/extension-tests/t3-response-cache-protocol.md
++++ b/extension-tests/t3-response-cache-protocol.md
+@@ -199,7 +199,10 @@ incomplete rather than raw logs alone.
+ - **B5 Cross-instance stability.** Two runtime instances, run as **separate JVM
+   processes**, share one real Redis. A request served by one is an observed hit
+   when repeated on the other.
+-  - **B5a:** without conversation history. The request on A must be a **silent
++  - **B5a: one-message history.** *(Relabelled in revision 3. It was previously
++    described as "without conversation history", but the runtime maps every
++    request message into the history that enters the key, so B5a's single user
++    message is a one-message history.)* The request on A must be a **silent
+     miss**, so that A demonstrably populated the entry. PASS requires that, an
+     observed hit on B, and recorder keys for A and B that are present, equal to
+     each other, and equal to the keys `MONITOR` shows A `SET` and B `GET`. A miss
+@@ -227,7 +230,11 @@ incomplete rather than raw logs alone.
+ - **B6 Policy.** Opting out through `cacheable: false` must produce two silent
+   misses and no new Redis key. A streamed request must reach the gateway's
+   **stream** endpoint exactly once and the chat endpoint not at all, return a
+-  final event, and add no Redis key.
++  final event, and add no Redis key. Any of these failing is a FAIL. *(Revision 3,
++  evidence-integrity correction:)* the streamed request's recorder events are
++  consumed and checked, and if the behaviour passes but that recorder evidence is
++  unreliable, B6 is INCOMPLETE, never PASS. With clean recorder evidence the
++  outcome is exactly the pre-revision rule.
+ - **B7 Degradation.** With Redis stopped, a request is still served, as a silent
+   miss.
+ 
+@@ -338,6 +345,23 @@ Revised on the final source review (30 September 2026):
+   the measurement is inconsistent, not that the behaviour failed. It is always
+   recorded explicitly, never treated as corroborated.
+ 
++Revision 3, after the post-repair run (30 September 2026; prepared, not frozen):
++
++- **B5a is relabelled "one-message history"**, which is what it has always
++  tested. Its assertion and pass rule are unchanged. B5b's 20 histories are
++  unchanged.
++- **B6 now consumes its streamed request's recorder events**, so the continuity
++  check no longer reports a false gap on the next request (which made B4
++  INCOMPLETE in the post-repair run). B4's TTL assertion and expiry window are
++  unchanged.
++- **B6 evidence-integrity correction:** unreliable recorder evidence for the
++  streamed request makes B6 INCOMPLETE instead of PASS. The behavioural rule,
++  which decides FAIL, is unchanged.
++- **A second repair is under test**: `ResponseCacheKeyFactory` digests each
++  history turn's role name and content in order, instead of calling
++  `history().hashCode()`. It is a permitted surface; `Message` and `Role` are not
++  changed.
++
+ Factual inputs, fixed 30 September 2026:
+ 
+ - **Redis image: `redis:7.4-alpine`, pinned to index digest

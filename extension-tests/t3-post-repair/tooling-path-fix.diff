@@ -1,0 +1,43 @@
+diff --git a/extension-tests/t3-harness/recorder/build-recorder.sh b/extension-tests/t3-harness/recorder/build-recorder.sh
+index 4f39f76..8b18962 100755
+--- a/extension-tests/t3-harness/recorder/build-recorder.sh
++++ b/extension-tests/t3-harness/recorder/build-recorder.sh
+@@ -5,6 +5,9 @@ set -euo pipefail
+ HERE="$(cd "$(dirname "$0")" && pwd)"
+ RUNTIME="${PROTOTYPES:-$HOME/Desktop/AI Projects}/Enterprise_AI_Runtime_Service"
+ OUT="${1:?output directory required}"; mkdir -p "$OUT/classes"
++# Absolute, because Maven runs inside the runtime repository and would resolve a
++# relative path there (T3 initial run, attempt 1).
++OUT="$(cd "$OUT" && pwd)"
+ JAVA_HOME="${JAVA_HOME:-$(mvn -v | sed -n 's/.*runtime: //p')}"
+ 
+ ( cd "$RUNTIME" && mvn -q -o -pl runtime-api -am compile )
+diff --git a/extension-tests/t3-harness/run-key-probe.sh b/extension-tests/t3-harness/run-key-probe.sh
+index 4e165f9..c7e379d 100755
+--- a/extension-tests/t3-harness/run-key-probe.sh
++++ b/extension-tests/t3-harness/run-key-probe.sh
+@@ -12,6 +12,9 @@ HISTORIES="$HERE/../t3-histories.json"
+ RUNTIME="${PROTOTYPES:-$HOME/Desktop/AI Projects}/Enterprise_AI_Runtime_Service"
+ OUT="${1:?output directory required}"
+ mkdir -p "$OUT"
++# Absolute, because Maven runs inside the runtime repository and would resolve a
++# relative path there (T3 initial run, attempt 1).
++OUT="$(cd "$OUT" && pwd)"
+ 
+ # The JDK Maven uses. On this machine /usr/bin/java is Apple's stub.
+ JAVA_HOME="${JAVA_HOME:-$(mvn -v | sed -n 's/.*runtime: //p')}"
+diff --git a/extension-tests/t3-harness/run_t3.py b/extension-tests/t3-harness/run_t3.py
+index 8d16438..b931974 100755
+--- a/extension-tests/t3-harness/run_t3.py
++++ b/extension-tests/t3-harness/run_t3.py
+@@ -773,7 +773,9 @@ class Harness:
+ if __name__ == "__main__":
+     if len(sys.argv) != 3 or sys.argv[1] not in ("initial", "post-repair"):
+         sys.exit("usage: run_t3.py initial|post-repair <output-dir>")
+-    out = Path(sys.argv[2])
++    # Absolute, because helper scripts run Maven inside the runtime repository and
++    # would resolve a relative path there (T3 initial run, attempt 1).
++    out = Path(sys.argv[2]).resolve()
+     if out.exists() and any(out.iterdir()):
+         sys.exit(f"{out} is not empty; each run writes to a fresh directory")
+     out.mkdir(parents=True, exist_ok=True)

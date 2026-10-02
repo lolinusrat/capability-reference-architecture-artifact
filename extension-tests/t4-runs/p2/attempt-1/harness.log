@@ -1,0 +1,45 @@
+[10:43:37Z] --- phase: verify frozen inputs
+[10:43:37Z] --- phase: build
+[10:43:42Z] --- phase: start stub, engines, load corpus
+[10:44:05Z] loaded 12 documents into pgvector and Qdrant
+[10:44:05Z] --- phase: pgvector: K1-K4
+[10:44:08Z] runtime pgvector ready: engine=pgvector fail_on_error=False installed=['pgvector']
+[10:44:09Z] pgvector-Q1: HTTP 200 recorder=['acme-refunds', 'acme-remote', 'acme-expenses'] prompt=['acme-expenses', 'acme-refunds', 'acme-remote'] errors=0
+[10:44:09Z] pgvector-Q2: HTTP 200 recorder=['acme-expenses', 'acme-parental', 'acme-salary-bands'] prompt=['acme-expenses', 'acme-parental', 'acme-salary-bands'] errors=0
+[10:44:09Z] pgvector-Q3: HTTP 200 recorder=['acme-passwords', 'acme-laptops', 'acme-expenses'] prompt=['acme-expenses', 'acme-laptops', 'acme-passwords'] errors=0
+[10:44:10Z] pgvector-Q4: HTTP 200 recorder=['globex-refunds', 'globex-travel', 'globex-security'] prompt=['globex-refunds', 'globex-security', 'globex-travel'] errors=0
+[10:44:10Z] pgvector-Q5: HTTP 200 recorder=['globex-security', 'globex-refunds', 'globex-travel'] prompt=['globex-refunds', 'globex-security', 'globex-travel'] errors=0
+[10:44:10Z] pgvector-Q6: HTTP 200 recorder=['acme-salary-bands', 'acme-parental', 'acme-passwords'] prompt=['acme-parental', 'acme-passwords', 'acme-salary-bands'] errors=0
+[10:44:10Z] == K1 retrieval (pgvector): PASS
+[10:44:10Z] == K2 tenant isolation (pgvector): PASS
+[10:44:10Z] == K3 access beyond tenant (pgvector): OBSERVATION
+[10:44:10Z] == K4 citation metadata (pgvector): PASS
+[10:44:10Z] --- phase: pgvector: K5
+[10:44:11Z] pgvector-K5-degraded: HTTP 200 recorder=[] prompt=[] errors=1
+[10:44:23Z] runtime pgvector-failonerror ready: engine=pgvector fail_on_error=True installed=['pgvector']
+[10:44:24Z] pgvector-K5-fail-on-error: HTTP 502 recorder=[] prompt=[] errors=1
+[10:44:34Z] == K5 failure behaviour (pgvector): FAIL
+[10:44:34Z] --- phase: qdrant: K1-K4
+[10:44:36Z] runtime qdrant ready: engine=qdrant fail_on_error=False installed=['qdrant']
+[10:44:37Z] qdrant-Q1: HTTP 200 recorder=['acme-refunds', 'acme-remote', 'acme-parental'] prompt=['acme-parental', 'acme-refunds', 'acme-remote'] errors=0
+[10:44:37Z] qdrant-Q2: HTTP 200 recorder=['acme-expenses', 'acme-parental', 'acme-salary-bands'] prompt=['acme-expenses', 'acme-parental', 'acme-salary-bands'] errors=0
+[10:44:37Z] qdrant-Q3: HTTP 200 recorder=['acme-passwords', 'acme-laptops', 'acme-parental'] prompt=['acme-laptops', 'acme-parental', 'acme-passwords'] errors=0
+[10:44:38Z] qdrant-Q4: HTTP 200 recorder=['globex-refunds', 'globex-travel', 'globex-security'] prompt=['globex-refunds', 'globex-security', 'globex-travel'] errors=0
+[10:44:38Z] qdrant-Q5: HTTP 200 recorder=['globex-security', 'globex-refunds', 'globex-travel'] prompt=['globex-refunds', 'globex-security', 'globex-travel'] errors=0
+[10:44:38Z] qdrant-Q6: HTTP 200 recorder=['acme-salary-bands', 'acme-parental', 'acme-passwords'] prompt=['acme-parental', 'acme-passwords', 'acme-salary-bands'] errors=0
+[10:44:38Z] == K1 retrieval (qdrant): PASS
+[10:44:38Z] == K2 tenant isolation (qdrant): PASS
+[10:44:38Z] == K3 access beyond tenant (qdrant): OBSERVATION
+[10:44:38Z] == K4 citation metadata (qdrant): PASS
+[10:44:38Z] --- phase: qdrant: K5
+[10:44:39Z] qdrant-K5-degraded: HTTP 200 recorder=[] prompt=[] errors=1
+[10:44:51Z] runtime qdrant-failonerror ready: engine=qdrant fail_on_error=True installed=['qdrant']
+[10:44:52Z] qdrant-K5-fail-on-error: HTTP 502 recorder=[] prompt=[] errors=1
+[10:45:03Z] == K5 failure behaviour (qdrant): FAIL
+[10:45:03Z] --- phase: K6, K7, concealment
+[10:45:03Z] == K6 substitution by configuration: FAIL
+[10:45:03Z] == K7 cross-engine consistency: PASS
+[10:45:03Z] == Concealment check (embedding requests): PASS
+[10:45:03Z] --- phase: containment
+[10:45:03Z] == Containment (interface inventory): PASS
+[10:45:03Z] run status: complete

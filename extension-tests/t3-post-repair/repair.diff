@@ -1,0 +1,12 @@
+diff --git a/Enterprise_AI_Runtime_Service/runtime-cache/pom.xml b/Enterprise_AI_Runtime_Service/runtime-cache/pom.xml
+index 5ebe4f87..e2e6c949 100644
+--- a/Enterprise_AI_Runtime_Service/runtime-cache/pom.xml
++++ b/Enterprise_AI_Runtime_Service/runtime-cache/pom.xml
+@@ -34,7 +34,6 @@
+     <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+-      <optional>true</optional>
+     </dependency>
+     <dependency>
+       <groupId>org.springframework.boot</groupId>

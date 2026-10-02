@@ -1,0 +1,6 @@
+# Excerpt of t4-runs/p2/attempt-1/runtime-pgvector.log (raw runtime log not included in the package).
+# Original SHA-256: 743d165f8f7f7847e3aa7f78407506f73cb0f1134be750f1c38b157c1ef4c255
+# Lines kept: those matching /Started RuntimeServiceApplication|APPLICATION FAILED|T4-RECORDER-ERROR|retriever \S+ failed/. Local root path shown as <prototypes-root>.
+
+2026-10-02T03:44:07.839-07:00  INFO [enterprise-ai-runtime-service,,] 40730 --- [enterprise-ai-runtime-service] [           main] [                                                 ] c.e.a.runtime.RuntimeServiceApplication  : Started RuntimeServiceApplication in 1.911 seconds (process running for 2.216)
+2026-10-02T03:44:11.147-07:00  WARN [enterprise-ai-runtime-service,,] 40730 --- [enterprise-ai-runtime-service] [oundedElastic-1] [                                                 ] c.e.a.r.retrieval.DefaultContextBuilder  : retriever pgvector failed for request 561a7f8b-fc78-4760-b7f5-4ff481b0374e, continuing without it: org.postgresql.util.PSQLException: Connection to 127.0.0.1:15432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.

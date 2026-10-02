@@ -1,0 +1,62 @@
+diff --git a/Enterprise_AI_Runtime_Service/runtime-cache/src/main/java/com/enterprise/ai/runtime/cache/response/ResponseCacheKeyFactory.java b/Enterprise_AI_Runtime_Service/runtime-cache/src/main/java/com/enterprise/ai/runtime/cache/response/ResponseCacheKeyFactory.java
+index ecf9dee2..c6d69163 100644
+--- a/Enterprise_AI_Runtime_Service/runtime-cache/src/main/java/com/enterprise/ai/runtime/cache/response/ResponseCacheKeyFactory.java
++++ b/Enterprise_AI_Runtime_Service/runtime-cache/src/main/java/com/enterprise/ai/runtime/cache/response/ResponseCacheKeyFactory.java
+@@ -2,10 +2,12 @@ package com.enterprise.ai.runtime.cache.response;
+ 
+ import com.enterprise.ai.runtime.common.context.ExecutionContext;
+ import com.enterprise.ai.runtime.common.model.ChatInvocation;
++import com.enterprise.ai.runtime.common.model.Message;
+ import com.enterprise.ai.runtime.common.prompt.PromptDefinition;
+ import java.nio.charset.StandardCharsets;
+ import java.security.MessageDigest;
+ import java.security.NoSuchAlgorithmException;
++import java.util.List;
+ import java.util.Map;
+ import java.util.TreeMap;
+ 
+@@ -71,13 +73,41 @@ public final class ResponseCacheKeyFactory {
+         if (prompt.isInline()) {
+             append(material, "inline", context.requireComposedPrompt().fullText());
+         }
+-        // History changes the answer, but hashing every turn's text keeps the key
+-        // bounded regardless of how long a conversation runs.
+-        append(material, "history", Integer.toHexString(invocation.history().hashCode()));
++        // History changes the answer, so it enters the key as a digest of each turn's
++        // role name and content, in order. A digest keeps the key material bounded
++        // however long a conversation runs. It must not use history().hashCode():
++        // Message is a record over the Role enum, whose hashCode is identity-based
++        // and differs between JVM processes, so a shared cache would never hit
++        // across instances (T3, post-repair run).
++        append(material, "history", historyDigest(invocation.history()));
+ 
+         return NAMESPACE + ":" + sha256(material.toString());
+     }
+ 
++    /**
++     * A process-independent digest of the conversation history.
++     *
++     * <p>Each turn contributes its role's name, its content's length and its
++     * content, in order. The role name (not the enum's hash) keeps the value
++     * identical in every JVM; order and role are both significant, so
++     * {@code [USER a, USER b]} differs from {@code [USER b, USER a]} and
++     * {@code USER a} from {@code ASSISTANT a}. The length prefix keeps the
++     * rendering unambiguous even if content contains the separators.
++     */
++    private String historyDigest(List<Message> history) {
++        if (history == null || history.isEmpty()) {
++            return "";
++        }
++        StringBuilder rendered = new StringBuilder();
++        for (Message message : history) {
++            String content = message.content();
++            rendered.append(message.role().name()).append(UNIT_SEPARATOR)
++                    .append(content.length()).append(':').append(content)
++                    .append(RECORD_SEPARATOR);
++        }
++        return sha256(rendered.toString());
++    }
++
+     /**
+      * Renders variables in a stable order.
+      *

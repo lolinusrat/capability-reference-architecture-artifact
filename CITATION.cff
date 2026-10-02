@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this replication package, please cite the paper and this package."
-title: "Replication package for: A Capability-Based Reference Architecture for Enterprise AI Platforms"
+title: "Replication package for: From Requirements to Testable Boundaries: Measuring Change Containment Under Technology Substitution in Enterprise AI Platforms"
+version: "2"
 type: dataset
 authors:
   - family-names: Loli
@@ -10,10 +11,10 @@ authors:
 license: CC-BY-4.0
 preferred-citation:
   type: article
-  title: "A Capability-Based Reference Architecture for Enterprise AI Platforms"
+  title: "From Requirements to Testable Boundaries: Measuring Change Containment Under Technology Substitution in Enterprise AI Platforms"
   authors:
     - family-names: Loli
       given-names: Nusrat
   year: 2026
-  # add after arXiv assigns an identifier:
-  # identifiers: [{type: other, value: "arXiv:XXXX.XXXXX"}]
+  # add the preprint's Zenodo DOI once it is published:
+  # identifiers: [{type: doi, value: "10.5281/zenodo.XXXXXXXX"}]
